@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../movie_design_system/commom/utils/images_assets.dart';
 import 'splash_store.dart';
 
 class SplashPage extends StatefulWidget {
@@ -19,8 +20,7 @@ class SplashPageState extends State<SplashPage> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage(
-                'https://manualdosgames.com/wp-content/uploads/2021/07/Netflix.jpg'),
+            image: AssetImage(ImagesAssets.background),
             fit: BoxFit.fill,
           ),
         ),

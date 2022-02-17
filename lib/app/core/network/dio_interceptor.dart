@@ -1,17 +1,19 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 
 import 'api_constants.dart';
 
 class DioInterceptor extends Interceptor {
   @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+  void onRequest(
+      RequestOptions options, RequestInterceptorHandler handler) async {
     log('REQUEST[${options.method}] => PATH: ${options.path}');
 
     options.queryParameters.addAll(
       {
-        'api_key': ApiConfigurations.apiKey,
+        'api_key': FirebaseRemoteConfig.instance.getString('api_key'),
         'language': ApiConfigurations.language,
       },
     );
