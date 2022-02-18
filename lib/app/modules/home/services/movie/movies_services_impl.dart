@@ -11,6 +11,14 @@ class MoviesServicesImpl implements MoviesServices {
   }) : _movieRepository = movieRepository;
 
   @override
-  Future<Result<List<Movie>>> getUpComingMovies() =>
-      _movieRepository.getUpComingMovies();
+  Future<Result<List<Movie>>> getUpcomingMovies() =>
+      _movieRepository.getUpcomingMovies();
+
+  @override
+  Future<Result<List<Movie>>> getPopularMovies() =>
+      _movieRepository.getPopularMovies();
+
+  @override
+  Future<Result<List<Movie>>> getTopRatedMovies() =>
+      _movieRepository.getTopRatedMovies();
 }

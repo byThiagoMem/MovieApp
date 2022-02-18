@@ -11,8 +11,20 @@ class MoviesRepositoryImpl implements MoviesRepository {
   MoviesRepositoryImpl({required Dio dio}) : _dio = dio;
 
   @override
-  Future<Result<List<Movie>>> getUpComingMovies() async {
+  Future<Result<List<Movie>>> getUpcomingMovies() async {
     return await _dio.get('/movie/upcoming').fullResult((json) =>
+        List<Movie>.from(json['results'].map((e) => Movie.fromMap(e))));
+  }
+
+  @override
+  Future<Result<List<Movie>>> getPopularMovies() async {
+    return await _dio.get('/movie/popular').fullResult((json) =>
+        List<Movie>.from(json['results'].map((e) => Movie.fromMap(e))));
+  }
+
+  @override
+  Future<Result<List<Movie>>> getTopRatedMovies() async {
+    return await _dio.get('/movie/top_rated').fullResult((json) =>
         List<Movie>.from(json['results'].map((e) => Movie.fromMap(e))));
   }
 }

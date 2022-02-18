@@ -17,22 +17,21 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
   @override
   void initState() {
     super.initState();
-    store.getMovies();
+    store.loadMovies();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Observer(
-        builder: (_) => store.upcomingMovies.handleState(
+        builder: (_) => store.topRatedMovies.handleState(
           () {
-            return const CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           },
           (data) {
             return ListView.builder(
-              itemBuilder: (context, index) => ListTile(
-                title: Text(data![index].title),
-              ),
+              itemBuilder: (context, index) => Image.network(
+                  'https://image.tmdb.org/t/p/w500/${data![index].posterPath}'),
               itemCount: data!.length,
             );
           },

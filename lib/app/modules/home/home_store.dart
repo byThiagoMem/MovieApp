@@ -13,11 +13,33 @@ abstract class HomeStoreBase with Store {
   final _moviesService = Modular.get<MoviesServices>();
 
   ShimmerState<List<Movie>> upcomingMovies = ShimmerState<List<Movie>>();
+  ShimmerState<List<Movie>> popularMovies = ShimmerState<List<Movie>>();
+  ShimmerState<List<Movie>> topRatedMovies = ShimmerState<List<Movie>>();
 
-  void getMovies() async {
-    (await _moviesService.getUpComingMovies()).result(
+  void loadMovies() {
+    getUpcomingMovies();
+    getPopularMovies();
+    getTopRatedMovies();
+  }
+
+  void getUpcomingMovies() async {
+    (await _moviesService.getUpcomingMovies()).result(
       (data) => upcomingMovies.setData(data),
       (error) => upcomingMovies.setError(error),
+    );
+  }
+
+  void getPopularMovies() async {
+    (await _moviesService.getPopularMovies()).result(
+      (data) => popularMovies.setData(data),
+      (error) => popularMovies.setError(error),
+    );
+  }
+
+  void getTopRatedMovies() async {
+    (await _moviesService.getTopRatedMovies()).result(
+      (data) => topRatedMovies.setData(data),
+      (error) => topRatedMovies.setError(error),
     );
   }
 }
