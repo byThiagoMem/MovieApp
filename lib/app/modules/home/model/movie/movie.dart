@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class Movie {
   final int id;
   final String title;
@@ -10,8 +8,6 @@ class Movie {
   final double popularity;
   final String posterPath;
   final String backdropPath;
-  final String? tvName;
-  final String? tvRelease;
   Movie({
     required this.id,
     required this.title,
@@ -22,12 +18,7 @@ class Movie {
     required this.popularity,
     required this.posterPath,
     required this.backdropPath,
-    this.tvName,
-    this.tvRelease,
   });
-
-  static List<Movie> fromMapList(Map<String, dynamic> map) =>
-      List<Movie>.from((map['results'] ?? []).map(Movie.fromMap));
 
   Map<String, dynamic> toMap() {
     return {
@@ -40,8 +31,6 @@ class Movie {
       'popularity': popularity,
       'posterPath': posterPath,
       'backdropPath': backdropPath,
-      'tvName': tvName,
-      'tvRelease': tvRelease,
     };
   }
 
@@ -50,18 +39,15 @@ class Movie {
       id: map['id']?.toInt() ?? 0,
       title: map['title'] ?? '',
       overview: map['overview'] ?? '',
-      releaseDate: map['releaseDate'] ?? '',
-      genreIds: List<int>.from(map['genreIds']),
-      voteAverage: map['voteAverage']?.toDouble() ?? 0.0,
+      releaseDate: map['release_date'] ?? '',
+      genreIds: List<int>.from(map['genre_ids']),
+      voteAverage: map['vote_average']?.toDouble() ?? 0.0,
       popularity: map['popularity']?.toDouble() ?? 0.0,
-      posterPath: map['posterPath'] ?? '',
-      backdropPath: map['backdropPath'] ?? '',
-      tvName: map['tvName'],
-      tvRelease: map['tvRelease'],
+      posterPath: map['poster_path'] ?? '',
+      backdropPath: map['backdrop_path'] ?? '',
     );
   }
 
-  String toJson() => json.encode(toMap());
-
-  factory Movie.fromJson(String source) => Movie.fromMap(json.decode(source));
+  static List<Movie> fromMapList(Map<String, dynamic> map) =>
+      List<Movie>.from((map['results'] ?? []).map(Movie.fromMap));
 }

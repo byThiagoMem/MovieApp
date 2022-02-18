@@ -1,5 +1,6 @@
+import '../../../../core/model/result.dart';
 import '../../model/movie/movie.dart';
 
 abstract class MoviesRepository {
-  Future<List<Movie>> getMovieUpComming();
+  Future<Result<List<Movie>>> getUpComingMovies();
 }
