@@ -24,9 +24,9 @@ class ColorPalettes {
 
   static Color getColorCircleProgress(double s) {
     var r = ColorPalettes.red;
-    if (s > 4.5 && s < 7) {
+    if (s > 4.5 && s < 8) {
       r = ColorPalettes.yellow;
-    } else if (s >= 7) {
+    } else if (s >= 8) {
       r = ColorPalettes.green;
     }
     return r;

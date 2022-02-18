@@ -13,16 +13,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends ModularState<HomePage, HomeStore> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-                'https://manualdosgames.com/wp-content/uploads/2021/07/Netflix.jpg'),
-            fit: BoxFit.fill,
-          ),
-        ),
+      body: Column(
+        children: [],
       ),
     );
   }

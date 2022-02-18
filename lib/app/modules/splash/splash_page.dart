@@ -1,29 +1,64 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../movie_design_system/commom/utils/images_assets.dart';
-import 'splash_store.dart';
+import '../../movie_design_system/commom/styles/color_palettes.dart';
+import '../../movie_design_system/commom/utils/utils.dart';
 
 class SplashPage extends StatefulWidget {
-  final String title;
-  const SplashPage({Key? key, this.title = 'SplashPage'}) : super(key: key);
+  const SplashPage({Key? key}) : super(key: key);
+
   @override
-  SplashPageState createState() => SplashPageState();
+  State<SplashPage> createState() => _SplashPageState();
 }
 
-class SplashPageState extends State<SplashPage> {
-  final SplashStore store = Modular.get();
+class _SplashPageState extends State<SplashPage>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    )..forward();
+  }
 
   @override
   Widget build(BuildContext context) {
+    Future.delayed(const Duration(milliseconds: 2200))
+        .then((_) => Modular.to.navigate(AppRoutes.home));
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(ImagesAssets.background),
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          Image.asset(
+            ImagesAssets.background,
             fit: BoxFit.fill,
           ),
-        ),
+          Builder(
+            builder: (context) {
+              return AnimatedBuilder(
+                animation: _controller,
+                builder: (_, __) {
+                  return Center(
+                    child: SizedBox(
+                      height: 60,
+                      width: 60,
+                      child: CircularProgressIndicator(
+                        value: _controller.value,
+                        strokeWidth: 2,
+                        color: ColorPalettes.getColorCircleProgress(
+                          _controller.value * 10,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
+          )
+        ],
       ),
     );
   }
