@@ -11,7 +11,7 @@ import '../../../../movie_design_system/widgets/shimmer/shimmer_banner.dart';
 import 'movie_banner_store.dart';
 
 class MovieBanner extends StatefulWidget {
-  MovieBanner({Key? key}) : super(key: key);
+  const MovieBanner({Key? key}) : super(key: key);
 
   @override
   State<MovieBanner> createState() => _MovieBannerState();
@@ -23,7 +23,7 @@ class _MovieBannerState extends State<MovieBanner> {
   @override
   void initState() {
     super.initState();
-    store.getNowPlayingMovies();
+    store.load();
   }
 
   @override
@@ -50,7 +50,7 @@ class _MovieBannerState extends State<MovieBanner> {
           if (error is DioFailure) {
             return NoInternetConnection(
               message: AppConstants.noInternetConnection,
-              onPressed: () => store.getNowPlayingMovies(),
+              onPressed: () => store.load(),
             );
           }
           if (error is DataFailure) {

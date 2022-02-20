@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-import '../../../modules/home/model/movie/movie.dart';
+import '../../../modules/movie/model/movie/movie.dart';
 import '../../commom/styles/color_palettes.dart';
 import '../../commom/utils/app_constants.dart';
 import '../../commom/utils/sizes.dart';
@@ -42,7 +42,8 @@ class BannerHome extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: CachedNetworkImage(
-                  imageUrl: AppConstants.baseUrlImage + data[index].posterPath,
+                  imageUrl:
+                      AppConstants.baseUrlImage + data[index].backdropPath,
                   placeholder: (_, __) => const LoadingIndicator(),
                   errorWidget: (_, __, ___) => const ErrorImage(),
                   fit: BoxFit.cover,

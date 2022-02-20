@@ -43,7 +43,7 @@ class Movie {
       genreIds: List<int>.from(map['genre_ids']),
       voteAverage: map['vote_average']?.toDouble() ?? 0.0,
       popularity: map['popularity']?.toDouble() ?? 0.0,
-      posterPath: map['backdrop_path'],
+      posterPath: map['poster_path'],
       backdropPath: map['backdrop_path'] ?? '',
     );
   }

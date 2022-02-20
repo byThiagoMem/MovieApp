@@ -16,7 +16,7 @@ abstract class _MovieBannerStoreBase with Store {
 
   List<Movie> get movies => nowPlayingMovies.data!;
 
-  void getNowPlayingMovies() async {
+  void load() async {
     (await _moviesService.getNowPlayingMovies()).result(
       (data) => nowPlayingMovies.setData(data),
       (error) => nowPlayingMovies.setError(error),

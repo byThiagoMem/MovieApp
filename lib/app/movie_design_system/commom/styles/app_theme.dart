@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'color_palettes.dart';
 
 // ignore: avoid_classes_with_only_static_members
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
+    fontFamily: 'IBMPlexSans',
     backgroundColor: ColorPalettes.lightBG,
     primaryColor: ColorPalettes.lightPrimary,
     textSelectionTheme: TextSelectionThemeData(
@@ -21,15 +21,11 @@ class AppTheme {
         fontSize: 18.0,
         fontWeight: FontWeight.bold,
       ),
-      titleTextStyle: GoogleFonts.sourceSansPro(
-        color: ColorPalettes.darkBG,
-        fontWeight: FontWeight.bold,
-        fontSize: 22.0,
-      ),
     ),
   );
 
   static ThemeData darkTheme = ThemeData(
+    fontFamily: 'IBMPlexSans',
     brightness: Brightness.dark,
     backgroundColor: ColorPalettes.darkBG,
     primaryColor: ColorPalettes.darkPrimary,
@@ -45,11 +41,6 @@ class AppTheme {
         color: ColorPalettes.lightBG,
         fontSize: 18.0,
         fontWeight: FontWeight.w700,
-      ),
-      titleTextStyle: GoogleFonts.sourceSansPro(
-        color: ColorPalettes.lightBG,
-        fontWeight: FontWeight.bold,
-        fontSize: 22.0,
       ),
     ),
   );

@@ -11,7 +11,7 @@ class ShimmerBanner extends StatelessWidget {
     return Container(
       width: double.infinity,
       child: Shimmer.fromColors(
-        baseColor: ColorPalettes.greyBg,
+        baseColor: ColorPalettes.grey,
         highlightColor: ColorPalettes.white,
         child: Column(
           children: [
