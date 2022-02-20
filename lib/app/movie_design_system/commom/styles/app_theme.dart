@@ -14,6 +14,7 @@ class AppTheme {
     dividerColor: ColorPalettes.darkBG,
     scaffoldBackgroundColor: ColorPalettes.lightBG,
     appBarTheme: AppBarTheme(
+      centerTitle: true,
       color: ColorPalettes.lightPrimary,
       toolbarTextStyle: TextStyle(
         color: ColorPalettes.darkBG,
@@ -38,7 +39,8 @@ class AppTheme {
       cursorColor: ColorPalettes.darkAccent,
     ),
     appBarTheme: AppBarTheme(
-      color: ColorPalettes.darkPrimary,
+      centerTitle: true,
+      color: ColorPalettes.darkBG,
       toolbarTextStyle: TextStyle(
         color: ColorPalettes.lightBG,
         fontSize: 18.0,

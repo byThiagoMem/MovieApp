@@ -1,7 +1,7 @@
 import '../../../../core/model/result.dart';
 import '../../model/movie/movie.dart';
 import '../../repositories/movie/movies_repository.dart';
-import '../movies_services.dart';
+import 'movies_services.dart';
 
 class MoviesServicesImpl implements MoviesServices {
   final MoviesRepository _movieRepository;
@@ -21,4 +21,8 @@ class MoviesServicesImpl implements MoviesServices {
   @override
   Future<Result<List<Movie>>> getTopRatedMovies() =>
       _movieRepository.getTopRatedMovies();
+
+  @override
+  Future<Result<List<Movie>>> getNowPlayingMovies() =>
+      _movieRepository.getNowPlayingMovies();
 }

@@ -7,7 +7,7 @@ class ColorPalettes {
   static Color lightAccent = Colors.orange;
   static Color darkAccent = Colors.orange;
   static Color lightBG = const Color(0xfffcfcff);
-  static Color darkBG = const Color(0xff212121);
+  static Color darkBG = const Color(0xff1C1A29);
 
   static Color white = const Color(0xffffffff);
   static Color whiteSemiTransparent = Colors.white70;
