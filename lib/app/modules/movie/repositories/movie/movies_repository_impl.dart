@@ -12,25 +12,29 @@ class MoviesRepositoryImpl implements MoviesRepository {
 
   @override
   Future<Result<List<Movie>>> getUpcomingMovies() async {
-    return await _dio.get('/movie/upcoming').fullResult((json) =>
-        List<Movie>.from(json['results'].map((list) => Movie.fromMap(list))));
+    return await _dio
+        .get('/movie/upcoming')
+        .fullResult((json) => Movie.fromMapList(json));
   }
 
   @override
   Future<Result<List<Movie>>> getPopularMovies() async {
-    return await _dio.get('/movie/popular').fullResult((json) =>
-        List<Movie>.from(json['results'].map((list) => Movie.fromMap(list))));
+    return await _dio
+        .get('/movie/popular')
+        .fullResult((json) => Movie.fromMapList(json));
   }
 
   @override
   Future<Result<List<Movie>>> getTopRatedMovies() async {
-    return await _dio.get('/movie/top_rated').fullResult((json) =>
-        List<Movie>.from(json['results'].map((list) => Movie.fromMap(list))));
+    return await _dio
+        .get('/movie/top_rated')
+        .fullResult((json) => Movie.fromMapList(json));
   }
 
   @override
   Future<Result<List<Movie>>> getNowPlayingMovies() {
-    return _dio.get('/movie/now_playing').fullResult((json) =>
-        List<Movie>.from(json['results'].map((list) => Movie.fromMap(list))));
+    return _dio
+        .get('/movie/now_playing')
+        .fullResult((json) => Movie.fromMapList(json));
   }
 }

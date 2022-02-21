@@ -9,7 +9,7 @@ import '../../../../movie_design_system/widgets/banner/custom_banner.dart';
 import '../../../../movie_design_system/widgets/error/error_widget.dart';
 import '../../../../movie_design_system/widgets/error/no_internet_connection.dart';
 import '../../../../movie_design_system/widgets/shimmer/shimmer_card.dart';
-import 'popular_store.dart';
+import 'popular_movies_store.dart';
 
 class PopularMovies extends StatefulWidget {
   const PopularMovies({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class PopularMovies extends StatefulWidget {
 }
 
 class _PopularMoviesState extends State<PopularMovies> {
-  final _store = Modular.get<PopularStore>();
+  final _store = Modular.get<PopularMoviesStore>();
 
   @override
   void initState() {

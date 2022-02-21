@@ -9,17 +9,17 @@ import '../../../../movie_design_system/widgets/banner/custom_banner.dart';
 import '../../../../movie_design_system/widgets/error/error_widget.dart';
 import '../../../../movie_design_system/widgets/error/no_internet_connection.dart';
 import '../../../../movie_design_system/widgets/shimmer/shimmer_card.dart';
-import 'top_rated_store.dart';
+import 'top_rated_movies_store.dart';
 
-class TopRated extends StatefulWidget {
-  const TopRated({Key? key}) : super(key: key);
+class TopRatedMovies extends StatefulWidget {
+  const TopRatedMovies({Key? key}) : super(key: key);
 
   @override
-  _TopRatedState createState() => _TopRatedState();
+  _TopRatedMoviesState createState() => _TopRatedMoviesState();
 }
 
-class _TopRatedState extends State<TopRated> {
-  final _store = Modular.get<TopRatedStore>();
+class _TopRatedMoviesState extends State<TopRatedMovies> {
+  final _store = Modular.get<TopRatedMoviesStore>();
 
   @override
   void initState() {

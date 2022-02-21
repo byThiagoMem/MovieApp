@@ -5,9 +5,9 @@ import '../../../../core/model/shimmer_state_model.dart';
 import '../../model/movie/movie.dart';
 import '../../services/movie/movies_services.dart';
 
-part 'upcoming_store.g.dart';
+part 'upcoming_movies_store.g.dart';
 
-class UpcomingStore = _UpcomingStoreBase with _$UpcomingStore;
+class UpcomingMoviesStore = _UpcomingStoreBase with _$UpcomingMoviesStore;
 
 abstract class _UpcomingStoreBase with Store {
   final _moviesServices = Modular.get<MoviesServices>();

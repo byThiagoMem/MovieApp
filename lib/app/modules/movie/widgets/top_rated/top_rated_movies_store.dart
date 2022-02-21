@@ -5,9 +5,9 @@ import '../../../../core/model/shimmer_state_model.dart';
 import '../../model/movie/movie.dart';
 import '../../services/movie/movies_services.dart';
 
-part 'top_rated_store.g.dart';
+part 'top_rated_movies_store.g.dart';
 
-class TopRatedStore = _TopRatedStoreBase with _$TopRatedStore;
+class TopRatedMoviesStore = _TopRatedStoreBase with _$TopRatedMoviesStore;
 
 abstract class _TopRatedStoreBase with Store {
   final _moviesServices = Modular.get<MoviesServices>();

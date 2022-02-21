@@ -1,18 +1,19 @@
-class Movie {
+class TvShow {
   final int id;
   final String title;
   final String overview;
-  final String releaseDate;
+  final String firstAirDate;
   final List<int> genreIds;
   final double voteAverage;
   final double popularity;
   final String posterPath;
   final String backdropPath;
-  Movie({
+
+  TvShow({
     required this.id,
     required this.title,
     required this.overview,
-    required this.releaseDate,
+    required this.firstAirDate,
     required this.genreIds,
     required this.voteAverage,
     required this.popularity,
@@ -20,22 +21,22 @@ class Movie {
     required this.backdropPath,
   });
 
-  factory Movie.fromMap(Map<String, dynamic> map) {
-    return Movie(
+  factory TvShow.fromMap(Map<String, dynamic> map) {
+    return TvShow(
       id: map['id']?.toInt() ?? 0,
-      title: map['title'] ?? '',
+      title: map['name'] ?? '',
       overview: map['overview'] ?? '',
-      releaseDate: map['release_date'] ?? '',
+      firstAirDate: map['first_air_date'] ?? '',
       genreIds: List<int>.from(map['genre_ids']),
       voteAverage: map['vote_average']?.toDouble() ?? 0.0,
       popularity: map['popularity']?.toDouble() ?? 0.0,
-      posterPath: map['poster_path'],
+      posterPath: map['poster_path'] ?? '',
       backdropPath: map['backdrop_path'] != null
           ? map['backdrop_path']
           : map['poster_path'] ?? '',
     );
   }
 
-  static List<Movie> fromMapList(Map<String, dynamic> json) =>
-      List<Movie>.from(json['results'].map((list) => Movie.fromMap(list)));
+  static List<TvShow> fromMapList(Map<String, dynamic> json) =>
+      List<TvShow>.from(json['results'].map((list) => TvShow.fromMap(list)));
 }

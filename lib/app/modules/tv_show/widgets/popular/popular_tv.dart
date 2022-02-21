@@ -9,28 +9,28 @@ import '../../../../movie_design_system/widgets/banner/custom_banner.dart';
 import '../../../../movie_design_system/widgets/error/error_widget.dart';
 import '../../../../movie_design_system/widgets/error/no_internet_connection.dart';
 import '../../../../movie_design_system/widgets/shimmer/shimmer_card.dart';
-import 'upcoming_movies_store.dart';
+import 'popular_tv_store.dart';
 
-class UpcomingMovies extends StatefulWidget {
-  const UpcomingMovies({Key? key}) : super(key: key);
+class PopularTv extends StatefulWidget {
+  const PopularTv({Key? key}) : super(key: key);
 
   @override
-  _UpcomingMoviesState createState() => _UpcomingMoviesState();
+  _PopularTvState createState() => _PopularTvState();
 }
 
-class _UpcomingMoviesState extends State<UpcomingMovies> {
-  final _store = Modular.get<UpcomingMoviesStore>();
+class _PopularTvState extends State<PopularTv> {
+  final _store = Modular.get<PopularTvStore>();
 
   @override
   void initState() {
-    super.initState();
     _store.load();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Observer(
-      builder: (_) => _store.upcomingMovies.handleStateLoadable(
+      builder: (_) => _store.popularTv.handleStateLoadable(
         () {
           return const Center(child: ShimmerCard());
         },
@@ -45,7 +45,7 @@ class _UpcomingMoviesState extends State<UpcomingMovies> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Up Coming',
+                      'Popular',
                       style: TextStyle(
                         fontSize: Sizes.dp15(context),
                         fontWeight: FontWeight.bold,

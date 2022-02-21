@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-import '../../../modules/movie/model/movie/movie.dart';
 import '../../commom/styles/color_palettes.dart';
 import '../../commom/utils/app_constants.dart';
 import '../../commom/utils/sizes.dart';
@@ -10,7 +9,7 @@ import '../error/error_image.dart';
 import '../progress/loading_indicator.dart';
 
 class BannerHome extends StatelessWidget {
-  final List<Movie> data;
+  final List<dynamic> data;
   final int currentIndex;
   final Function(int index, CarouselPageChangedReason reason) onPageChanged;
   const BannerHome({
@@ -46,7 +45,7 @@ class BannerHome extends StatelessWidget {
                       AppConstants.baseUrlImage + data[index].backdropPath,
                   placeholder: (_, __) => const LoadingIndicator(),
                   errorWidget: (_, __, ___) => const ErrorImage(),
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                   width: Sizes.width(context),
                 ),
               ),

@@ -9,28 +9,28 @@ import '../../../../movie_design_system/widgets/banner/custom_banner.dart';
 import '../../../../movie_design_system/widgets/error/error_widget.dart';
 import '../../../../movie_design_system/widgets/error/no_internet_connection.dart';
 import '../../../../movie_design_system/widgets/shimmer/shimmer_card.dart';
-import 'upcoming_movies_store.dart';
+import 'on_the_air_tv_store.dart';
 
-class UpcomingMovies extends StatefulWidget {
-  const UpcomingMovies({Key? key}) : super(key: key);
+class OnTheAirTv extends StatefulWidget {
+  const OnTheAirTv({Key? key}) : super(key: key);
 
   @override
-  _UpcomingMoviesState createState() => _UpcomingMoviesState();
+  _OnTheAirTvState createState() => _OnTheAirTvState();
 }
 
-class _UpcomingMoviesState extends State<UpcomingMovies> {
-  final _store = Modular.get<UpcomingMoviesStore>();
+class _OnTheAirTvState extends State<OnTheAirTv> {
+  final _store = Modular.get<OnTheAirTvStore>();
 
   @override
   void initState() {
-    super.initState();
     _store.load();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Observer(
-      builder: (_) => _store.upcomingMovies.handleStateLoadable(
+      builder: (_) => _store.onTheAirTv.handleStateLoadable(
         () {
           return const Center(child: ShimmerCard());
         },
@@ -45,7 +45,7 @@ class _UpcomingMoviesState extends State<UpcomingMovies> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Up Coming',
+                      'On The Air ',
                       style: TextStyle(
                         fontSize: Sizes.dp15(context),
                         fontWeight: FontWeight.bold,

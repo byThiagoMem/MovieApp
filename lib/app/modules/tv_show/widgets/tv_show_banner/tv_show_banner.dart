@@ -8,17 +8,17 @@ import '../../../../movie_design_system/widgets/banner/banner_home.dart';
 import '../../../../movie_design_system/widgets/error/error_widget.dart';
 import '../../../../movie_design_system/widgets/error/no_internet_connection.dart';
 import '../../../../movie_design_system/widgets/shimmer/shimmer_banner.dart';
-import 'movie_banner_store.dart';
+import 'tv_show_banner_store.dart';
 
-class MovieBanner extends StatefulWidget {
-  const MovieBanner({Key? key}) : super(key: key);
+class TvShowBanner extends StatefulWidget {
+  const TvShowBanner({Key? key}) : super(key: key);
 
   @override
-  State<MovieBanner> createState() => _MovieBannerState();
+  _TvShowBannerState createState() => _TvShowBannerState();
 }
 
-class _MovieBannerState extends State<MovieBanner> {
-  final _store = Modular.get<MovieBannerStore>();
+class _TvShowBannerState extends State<TvShowBanner> {
+  final _store = Modular.get<TvShowBannerStore>();
 
   @override
   void initState() {
@@ -30,7 +30,7 @@ class _MovieBannerState extends State<MovieBanner> {
   Widget build(BuildContext context) {
     int _currentIndex = 0;
     return Observer(
-      builder: (_) => _store.nowPlayingMovies.handleStateLoadable(
+      builder: (_) => _store.aringTodayTvShows.handleStateLoadable(
         () {
           return const Center(child: ShimmerBanner());
         },
@@ -39,9 +39,9 @@ class _MovieBannerState extends State<MovieBanner> {
             return const Center(child: ShimmerBanner());
           }
           return StatefulBuilder(
-            key: const ValueKey('NothingFound'),
+            key: const ValueKey('NothingFound 2'),
             builder: (_, setState) => BannerHome(
-              data: _store.movies,
+              data: _store.aringTodayTvShowsList,
               currentIndex: _currentIndex,
               onPageChanged: (index, reason) => setState(
                 () => _currentIndex = index,
