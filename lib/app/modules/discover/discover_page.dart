@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../movie_design_system/commom/utils/arguments.dart';
+import '../../movie_design_system/commom/utils/sizes.dart';
 import 'discover_store.dart';
+import 'widgets/card/card_header.dart';
+import 'widgets/overview/overview_widget.dart';
 
 class DiscoverPage extends StatefulWidget {
   final ScreenArguments data;
@@ -17,11 +20,19 @@ class DiscoverPageState extends State<DiscoverPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.data.screenData.title),
-      ),
-      body: Column(
-        children: <Widget>[],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            CardHeader(data: widget.data),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: Sizes.dp15(context),
+                vertical: Sizes.dp15(context),
+              ),
+              child: OverviewWidget(overview: widget.data.screenData.overview),
+            ),
+          ],
+        ),
       ),
     );
   }

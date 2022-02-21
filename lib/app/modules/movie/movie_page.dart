@@ -26,7 +26,7 @@ class _MoviePageState extends State<MoviePage> {
       Modular.get<PopularMoviesStore>().load(reload: true),
       Modular.get<UpcomingMoviesStore>().load(reload: true),
       Modular.get<TopRatedMoviesStore>().load(reload: true),
-    ]);
+    ]).then((value) => setState(() {}));
   }
 
   @override
@@ -37,7 +37,7 @@ class _MoviePageState extends State<MoviePage> {
         automaticallyImplyLeading: false,
       ),
       body: RefreshIndicator(
-        onRefresh: _refresh,
+        onRefresh: () => _refresh(),
         child: ListView(
           physics: const ClampingScrollPhysics(),
           padding: const EdgeInsets.all(10),
