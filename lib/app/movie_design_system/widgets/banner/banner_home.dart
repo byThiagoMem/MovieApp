@@ -1,22 +1,29 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../commom/styles/color_palettes.dart';
 import '../../commom/utils/app_constants.dart';
+import '../../commom/utils/arguments.dart';
 import '../../commom/utils/sizes.dart';
 import '../error/error_image.dart';
 import '../progress/loading_indicator.dart';
 
 class BannerHome extends StatelessWidget {
-  final List<dynamic> data;
+  final List<ScreenData> data;
   final int currentIndex;
   final Function(int index, CarouselPageChangedReason reason) onPageChanged;
+  final String routeNameDetail;
+  //final String routeNameAll;
+
   const BannerHome({
     Key? key,
     required this.data,
     required this.currentIndex,
     required this.onPageChanged,
+    required this.routeNameDetail,
+    //required this.routeNameAll,
   }) : super(key: key);
 
   @override
@@ -36,37 +43,45 @@ class BannerHome extends StatelessWidget {
             autoPlayInterval: const Duration(seconds: 4),
             onPageChanged: onPageChanged,
           ),
-          itemBuilder: (context, index, realIndex) {
-            return GridTile(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: CachedNetworkImage(
-                  imageUrl:
-                      AppConstants.baseUrlImage + data[index].backdropPath,
-                  placeholder: (_, __) => const LoadingIndicator(),
-                  errorWidget: (_, __, ___) => const ErrorImage(),
-                  fit: BoxFit.fill,
-                  width: Sizes.width(context),
+          itemBuilder: (context, index, _) {
+            return GestureDetector(
+              onTap: () => Modular.to.pushNamed(
+                routeNameDetail,
+                arguments: ScreenArguments(
+                  screenData: data[index],
                 ),
               ),
-              footer: Container(
-                decoration: BoxDecoration(
-                  color: ColorPalettes.whiteSemiTransparent,
-                  borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(10),
-                      bottomRight: Radius.circular(10)),
+              child: GridTile(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: CachedNetworkImage(
+                    imageUrl:
+                        AppConstants.baseUrlImage + data[index].backdropPath,
+                    placeholder: (_, __) => const LoadingIndicator(),
+                    errorWidget: (_, __, ___) => const ErrorImage(),
+                    fit: BoxFit.fill,
+                    width: Sizes.width(context),
+                  ),
                 ),
-                padding: EdgeInsets.all(Sizes.dp5(context)),
-                child: Text(
-                  data[index].title.isNotEmpty
-                      ? data[index].title
-                      : 'No Tv Name',
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: ColorPalettes.darkBG,
-                    fontWeight: FontWeight.bold,
-                    fontSize: Sizes.dp16(context),
+                footer: Container(
+                  decoration: BoxDecoration(
+                    color: ColorPalettes.whiteSemiTransparent,
+                    borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(10),
+                        bottomRight: Radius.circular(10)),
+                  ),
+                  padding: EdgeInsets.all(Sizes.dp5(context)),
+                  child: Text(
+                    data[index].title.isNotEmpty
+                        ? data[index].title
+                        : 'No Tv Name',
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: ColorPalettes.darkBG,
+                      fontWeight: FontWeight.bold,
+                      fontSize: Sizes.dp16(context),
+                    ),
                   ),
                 ),
               ),

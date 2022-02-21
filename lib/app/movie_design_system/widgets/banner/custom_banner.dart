@@ -8,21 +8,37 @@ import '../progress/loading_indicator.dart';
 
 class CustomBanner extends StatelessWidget {
   final String image;
-  const CustomBanner({Key? key, required this.image}) : super(key: key);
+  final VoidCallback onTap;
+  const CustomBanner({Key? key, required this.image, required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: Sizes.width(context) / 3,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        child: CachedNetworkImage(
-          imageUrl: AppConstants.baseUrlImage + image,
-          fit: BoxFit.cover,
-          placeholder: (context, url) => const LoadingIndicator(),
-          errorWidget: (context, url, error) => const ErrorImage(),
+    return Stack(
+      children: [
+        SizedBox(
+          width: Sizes.width(context) / 3,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: CachedNetworkImage(
+              imageUrl: AppConstants.baseUrlImage + image,
+              fit: BoxFit.cover,
+              placeholder: (context, url) => const LoadingIndicator(),
+              errorWidget: (context, url, error) => const ErrorImage(),
+            ),
+          ),
         ),
-      ),
+        Positioned.fill(
+          child: Material(
+            borderRadius: BorderRadius.circular(Sizes.dp10(context)),
+            color: Colors.transparent,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(Sizes.dp10(context)),
+              onTap: onTap,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

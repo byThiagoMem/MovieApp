@@ -4,6 +4,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../core/model/failure.dart';
 import '../../../../movie_design_system/commom/utils/app_constants.dart';
+import '../../../../movie_design_system/commom/utils/app_routes.dart';
+import '../../../../movie_design_system/commom/utils/arguments.dart';
 import '../../../../movie_design_system/commom/utils/sizes.dart';
 import '../../../../movie_design_system/widgets/banner/custom_banner.dart';
 import '../../../../movie_design_system/widgets/error/error_widget.dart';
@@ -66,6 +68,22 @@ class _OnTheAirTvState extends State<OnTheAirTv> {
                     itemBuilder: (_, index) {
                       return CustomBanner(
                         image: data[index].posterPath,
+                        onTap: () => Modular.to.pushNamed(
+                          AppRoutes.discover,
+                          arguments: ScreenArguments(
+                            screenData: ScreenData(
+                              id: data[index].id,
+                              title: data[index].title,
+                              overview: data[index].overview,
+                              releaseDate: data[index].firstAirDate,
+                              genreIds: data[index].genreIds,
+                              voteAverage: data[index].voteAverage,
+                              popularity: data[index].popularity,
+                              posterPath: data[index].posterPath,
+                              backdropPath: data[index].backdropPath,
+                            ),
+                          ),
+                        ),
                       );
                     },
                     separatorBuilder: (_, __) => const SizedBox(width: 10),

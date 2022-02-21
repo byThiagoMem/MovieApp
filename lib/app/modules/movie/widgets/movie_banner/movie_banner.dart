@@ -4,6 +4,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../core/model/failure.dart';
 import '../../../../movie_design_system/commom/utils/app_constants.dart';
+import '../../../../movie_design_system/commom/utils/app_routes.dart';
+import '../../../../movie_design_system/commom/utils/arguments.dart';
 import '../../../../movie_design_system/widgets/banner/banner_home.dart';
 import '../../../../movie_design_system/widgets/error/error_widget.dart';
 import '../../../../movie_design_system/widgets/error/no_internet_connection.dart';
@@ -29,6 +31,7 @@ class _MovieBannerState extends State<MovieBanner> {
   @override
   Widget build(BuildContext context) {
     int _currentIndex = 0;
+
     return Observer(
       builder: (_) => _store.nowPlayingMovies.handleStateLoadable(
         () {
@@ -41,11 +44,26 @@ class _MovieBannerState extends State<MovieBanner> {
           return StatefulBuilder(
             key: const ValueKey('NothingFound'),
             builder: (_, setState) => BannerHome(
-              data: _store.movies,
+              data: List.from(
+                data.map(
+                  (e) => ScreenData(
+                    id: e.id,
+                    title: e.title,
+                    overview: e.overview,
+                    releaseDate: e.releaseDate,
+                    genreIds: e.genreIds,
+                    voteAverage: e.voteAverage,
+                    popularity: e.popularity,
+                    posterPath: e.posterPath,
+                    backdropPath: e.backdropPath,
+                  ),
+                ),
+              ),
               currentIndex: _currentIndex,
               onPageChanged: (index, reason) => setState(
                 () => _currentIndex = index,
               ),
+              routeNameDetail: AppRoutes.discover,
             ),
           );
         },
