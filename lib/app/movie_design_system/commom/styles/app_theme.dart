@@ -43,5 +43,8 @@ class AppTheme {
         fontWeight: FontWeight.w700,
       ),
     ),
+    bottomAppBarTheme: BottomAppBarTheme(
+      color: ColorPalettes.darkBN,
+    ),
   );
 }

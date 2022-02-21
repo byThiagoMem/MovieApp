@@ -32,10 +32,11 @@ class DashboardPageState extends State<DashboardPage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
+        backgroundColor: ColorPalettes.darkBN,
         onPressed: () {},
         child: Icon(
           Icons.location_searching,
-          color: ColorPalettes.white,
+          color: ColorPalettes.darkAccent,
         ),
       ),
       bottomNavigationBar: Observer(
@@ -47,7 +48,6 @@ class DashboardPageState extends State<DashboardPage> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(
-                  tooltip: 'movie',
                   color: _store.currentPage == 0
                       ? ColorPalettes.darkAccent
                       : ColorPalettes.grey,
@@ -55,7 +55,6 @@ class DashboardPageState extends State<DashboardPage> {
                   onPressed: () => _store.setCurrentPage(0),
                 ),
                 IconButton(
-                  tooltip: 'tv_show',
                   color: _store.currentPage == 1
                       ? ColorPalettes.darkAccent
                       : ColorPalettes.grey,
