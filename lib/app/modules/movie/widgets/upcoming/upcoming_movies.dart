@@ -30,49 +30,53 @@ class _UpcomingMoviesState extends State<UpcomingMovies> {
   @override
   Widget build(BuildContext context) {
     return Observer(
-      builder: (_) => _store.upcomingMovies.handleState(
+      builder: (_) => _store.upcomingMovies.handleStateLoadable(
         () {
           return const Center(child: ShimmerCard());
         },
-        (data) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Up Coming',
-                    style: TextStyle(
-                      fontSize: Sizes.dp15(context),
-                      fontWeight: FontWeight.bold,
+        (data, loading) {
+          if (loading) {
+            return const Center(child: ShimmerCard());
+          } else {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Up Coming',
+                      style: TextStyle(
+                        fontSize: Sizes.dp15(context),
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.arrow_forward_ios_rounded,
-                      size: Sizes.dp15(context),
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: Sizes.height(context) * 0.23,
-                child: ListView.separated(
-                  itemBuilder: (_, index) {
-                    return CustomBanner(
-                      image: data![index].posterPath,
-                    );
-                  },
-                  separatorBuilder: (_, __) => const SizedBox(width: 10),
-                  itemCount: data!.length < 5 ? data.length : 5,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        size: Sizes.dp15(context),
+                      ),
+                    )
+                  ],
                 ),
-              ),
-            ],
-          );
+                SizedBox(
+                  height: Sizes.height(context) * 0.23,
+                  child: ListView.separated(
+                    itemBuilder: (_, index) {
+                      return CustomBanner(
+                        image: data[index].posterPath,
+                      );
+                    },
+                    separatorBuilder: (_, __) => const SizedBox(width: 10),
+                    itemCount: data.length < 5 ? data.length : 5,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                  ),
+                ),
+              ],
+            );
+          }
         },
         (error) {
           if (error is DioFailure) {

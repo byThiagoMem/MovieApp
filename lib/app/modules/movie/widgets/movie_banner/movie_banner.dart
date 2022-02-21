@@ -30,11 +30,14 @@ class _MovieBannerState extends State<MovieBanner> {
   Widget build(BuildContext context) {
     int _currentIndex = 0;
     return Observer(
-      builder: (_) => store.nowPlayingMovies.handleState(
+      builder: (_) => store.nowPlayingMovies.handleStateLoadable(
         () {
           return const Center(child: ShimmerBanner());
         },
-        (data) {
+        (data, loading) {
+          if (loading) {
+            return const Center(child: ShimmerBanner());
+          }
           return StatefulBuilder(
             key: const ValueKey('NothingFound'),
             builder: (_, setState) => BannerHome(

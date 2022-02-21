@@ -18,3 +18,4 @@ linter:
     avoid_catches_without_on_clauses: false
     avoid_classes_with_only_static_members: false
     unnecessary_lambdas: false
+    prefer_final_fields: false

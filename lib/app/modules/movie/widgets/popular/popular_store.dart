@@ -14,7 +14,8 @@ abstract class _PopularStoreBase with Store {
 
   final ShimmerState<List<Movie>> popularMovies = ShimmerState<List<Movie>>();
 
-  void load() async {
+  Future<void> load({bool? reload}) async {
+    if (reload != null && reload) popularMovies.setReloading();
     (await _moviesService.getNowPlayingMovies()).result(
       (data) => popularMovies.setData(data),
       (error) => popularMovies.setError(error),

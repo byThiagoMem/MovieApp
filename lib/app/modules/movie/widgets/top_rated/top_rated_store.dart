@@ -14,7 +14,8 @@ abstract class _TopRatedStoreBase with Store {
 
   ShimmerState<List<Movie>> topRatedMovies = ShimmerState<List<Movie>>();
 
-  void load() async {
+  Future<void> load({bool? reload}) async {
+    if (reload != null && reload) topRatedMovies.setReloading();
     (await _moviesServices.getTopRatedMovies()).result(
       (data) => topRatedMovies.setData(data),
       (error) => topRatedMovies.setError(error),

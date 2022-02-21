@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'core/network/dio_client.dart';
-import 'modules/movie/movie_module.dart';
+import 'modules/dashboard/dashboard_module.dart';
 import 'modules/splash/splash_module.dart';
 
 class AppModule extends Module {
@@ -13,6 +13,6 @@ class AppModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ModuleRoute('/', module: SplashModule()),
-    ModuleRoute('/home', module: MovieModule())
+    ModuleRoute('/dashboard', module: DashboardModule()),
   ];
 }

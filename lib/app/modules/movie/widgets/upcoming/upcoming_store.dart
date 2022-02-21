@@ -14,7 +14,8 @@ abstract class _UpcomingStoreBase with Store {
 
   ShimmerState<List<Movie>> upcomingMovies = ShimmerState<List<Movie>>();
 
-  void load() async {
+  Future<void> load({bool? reload}) async {
+    if (reload != null && reload) upcomingMovies.setReloading();
     (await _moviesServices.getUpcomingMovies()).result(
       (data) => upcomingMovies.setData(data),
       (error) => upcomingMovies.setError(error),

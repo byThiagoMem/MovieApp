@@ -16,7 +16,8 @@ abstract class _MovieBannerStoreBase with Store {
 
   List<Movie> get movies => nowPlayingMovies.data!;
 
-  void load() async {
+  Future<void> load({bool? reload}) async {
+    if (reload != null && reload) nowPlayingMovies.setReloading();
     (await _moviesService.getNowPlayingMovies()).result(
       (data) => nowPlayingMovies.setData(data),
       (error) => nowPlayingMovies.setError(error),

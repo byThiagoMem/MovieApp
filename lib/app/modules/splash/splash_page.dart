@@ -27,7 +27,7 @@ class _SplashPageState extends State<SplashPage>
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(milliseconds: 1999))
-        .then((_) => Modular.to.navigate(AppRoutes.home));
+        .then((_) => Modular.to.navigate(AppRoutes.dashboard));
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
