@@ -2,13 +2,13 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'presenter/page/tvShow_page.dart';
+import 'presenter/widgets/on_the_air/on_the_air_tv_store.dart';
+import 'presenter/widgets/popular/popular_tv_store.dart';
+import 'presenter/widgets/top_rated/top_rated_tv_store.dart';
+import 'presenter/widgets/tv_show_banner/tv_show_banner_store.dart';
 import 'repositories/tv_show/tv_show_repository_impl.dart';
 import 'services/tv_show/tv_show_service_impl.dart';
-import 'tvShow_page.dart';
-import 'widgets/on_the_air/on_the_air_tv_store.dart';
-import 'widgets/popular/popular_tv_store.dart';
-import 'widgets/top_rated/top_rated_tv_store.dart';
-import 'widgets/tv_show_banner/tv_show_banner_store.dart';
 
 class TvShowModule extends WidgetModule {
   @override
