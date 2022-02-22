@@ -1,11 +1,11 @@
-class Crew {
+class TvShowCrew {
   final int id;
   final String name;
   final String profilePath;
   final String character;
   final int order;
 
-  Crew({
+  TvShowCrew({
     required this.id,
     required this.name,
     required this.profilePath,
@@ -13,8 +13,8 @@ class Crew {
     required this.order,
   });
 
-  factory Crew.fromMap(Map<String, dynamic> map) {
-    return Crew(
+  factory TvShowCrew.fromMap(Map<String, dynamic> map) {
+    return TvShowCrew(
       id: map['id'] ?? '',
       name: map['name'] ?? '',
       profilePath: map['profile_path'] ?? '',
@@ -23,6 +23,7 @@ class Crew {
     );
   }
 
-  static List<Crew> fromMapList(Map<String, dynamic> json) =>
-      List<Crew>.from(json['cast'].map((list) => Crew.fromMap(list)));
+  static List<TvShowCrew> fromMapList(Map<String, dynamic> json) =>
+      List<TvShowCrew>.from(
+          json['cast'].map((list) => TvShowCrew.fromMap(list)));
 }

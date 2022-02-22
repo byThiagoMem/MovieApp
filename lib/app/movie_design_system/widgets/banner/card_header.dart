@@ -74,6 +74,7 @@ class CardHeader extends StatelessWidget {
               ),
             ),
           ),
+          //Infos
           Positioned(
             height: Sizes.height(context) * .22,
             left: Sizes.width(context) * .35,
@@ -84,6 +85,13 @@ class CardHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(width: Sizes.dp15(context)),
+                Text(
+                  data.screenData.title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
                 Text(
                   data.screenData.title,
                   style: const TextStyle(

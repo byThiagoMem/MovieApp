@@ -2,7 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../../core/model/shimmer_state_model.dart';
-import '../../../model/tv_show.dart';
+import '../../../model/tv_show/tv_show.dart';
 import '../../../services/tv_show/tv_show_service.dart';
 
 part 'popular_tv_store.g.dart';

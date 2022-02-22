@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../movie_design_system/commom/utils/utils.dart';
 import '../../../../movie_design_system/widgets/banner/card_header.dart';
+import '../widgets/crew/crew_tv_show.dart';
 
 class OverviewTvShowPage extends StatefulWidget {
   final ScreenArguments data;
@@ -16,6 +17,7 @@ class OverviewTvShowPageState extends State<OverviewTvShowPage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CardHeader(data: widget.data),
             Padding(
@@ -41,6 +43,12 @@ class OverviewTvShowPageState extends State<OverviewTvShowPage> {
                   ),
                 ],
               ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: Sizes.dp15(context),
+              ),
+              child: CrewTvShow(id: widget.data.screenData.id.toString()),
             ),
           ],
         ),

@@ -87,7 +87,7 @@ class _UpcomingMoviesState extends State<UpcomingMovies> {
                       );
                     },
                     separatorBuilder: (_, __) => const SizedBox(width: 10),
-                    itemCount: data.length < 5 ? data.length : 5,
+                    itemCount: data.length < 5 ? data.length : 6,
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
                   ),

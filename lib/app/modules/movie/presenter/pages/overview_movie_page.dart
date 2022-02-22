@@ -17,6 +17,7 @@ class OverviewMoviePageState extends State<OverviewMoviePage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CardHeader(data: widget.data),
             Padding(

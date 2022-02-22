@@ -1,5 +1,5 @@
 import '../../../../core/model/result.dart';
-import '../../model/crew/crew.dart';
+import '../../model/crew/movie_crew.dart';
 import '../../model/movie/movie.dart';
 import '../../repositories/movie/movies_repository.dart';
 import 'movies_services.dart';
@@ -28,6 +28,6 @@ class MoviesServicesImpl implements MoviesServices {
       _movieRepository.getNowPlayingMovies();
 
   @override
-  Future<Result<List<Crew>>> getCrewMovieById({required String id}) =>
+  Future<Result<List<MovieCrew>>> getCrewMovieById({required String id}) =>
       _movieRepository.getCrewMovieById(id: id);
 }

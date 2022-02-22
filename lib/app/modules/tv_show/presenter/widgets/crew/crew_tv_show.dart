@@ -8,17 +8,17 @@ import '../../../../../movie_design_system/widgets/banner/crew_card.dart';
 import '../../../../../movie_design_system/widgets/error/error_widget.dart';
 import '../../../../../movie_design_system/widgets/error/no_internet_connection.dart';
 import '../../../../../movie_design_system/widgets/shimmer/shimmer_crew_card.dart';
-import 'crew_movie_store.dart';
+import 'crew_tv_show_store.dart';
 
-class CrewMovie extends StatefulWidget {
+class CrewTvShow extends StatefulWidget {
   final String id;
-  const CrewMovie({Key? key, required this.id}) : super(key: key);
+  const CrewTvShow({Key? key, required this.id}) : super(key: key);
 
   @override
-  _CrewMovieState createState() => _CrewMovieState();
+  _CrewTvShowState createState() => _CrewTvShowState();
 }
 
-class _CrewMovieState extends ModularState<CrewMovie, CrewMovieStore> {
+class _CrewTvShowState extends ModularState<CrewTvShow, CrewTvShowStore> {
   @override
   void initState() {
     super.initState();
