@@ -21,7 +21,7 @@ class CustomBanner extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: CachedNetworkImage(
-              imageUrl: AppConstants.baseUrlImage + image,
+              imageUrl: AppConstants.urlImage + image,
               fit: BoxFit.cover,
               placeholder: (context, url) => const LoadingIndicator(),
               errorWidget: (context, url, error) => const ErrorImage(),

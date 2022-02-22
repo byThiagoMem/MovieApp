@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 
 import '../../../core/model/genres.dart';
+import '../../commom/extension/extension.dart';
 import '../../commom/styles/color_palettes.dart';
 import '../../commom/utils/app_constants.dart';
 import '../../commom/utils/arguments.dart';
@@ -33,8 +34,7 @@ class CardHeader extends StatelessWidget {
               child: Opacity(
                 opacity: .6,
                 child: CachedNetworkImage(
-                  imageUrl:
-                      AppConstants.baseUrlImage + data.screenData.backdropPath,
+                  imageUrl: data.screenData.backdropPath.originalImage,
                   fit: BoxFit.fill,
                   placeholder: (context, url) => const LoadingIndicator(),
                   errorWidget: (context, url, error) => const ErrorImage(),
@@ -68,8 +68,7 @@ class CardHeader extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: CachedNetworkImage(
-                imageUrl:
-                    AppConstants.baseUrlImage + data.screenData.posterPath,
+                imageUrl: AppConstants.urlImage + data.screenData.posterPath,
                 placeholder: (context, url) => const LoadingIndicator(),
                 errorWidget: (context, url, error) => const ErrorImage(),
               ),

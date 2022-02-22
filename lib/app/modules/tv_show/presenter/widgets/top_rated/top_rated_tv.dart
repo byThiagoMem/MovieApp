@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../../core/model/failure.dart';
-import '../../../../../movie_design_system/commom/utils/app_constants.dart';
 import '../../../../../movie_design_system/commom/utils/utils.dart';
 import '../../../../../movie_design_system/widgets/banner/custom_banner.dart';
 import '../../../../../movie_design_system/widgets/error/error_widget.dart';
