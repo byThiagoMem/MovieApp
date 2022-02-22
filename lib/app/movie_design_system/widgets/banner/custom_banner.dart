@@ -18,16 +18,13 @@ class CustomBanner extends StatelessWidget {
       children: [
         SizedBox(
           width: Sizes.width(context) / 3,
-          child: Hero(
-            tag: 'banner$image',
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: CachedNetworkImage(
-                imageUrl: AppConstants.baseUrlImage + image,
-                fit: BoxFit.cover,
-                placeholder: (context, url) => const LoadingIndicator(),
-                errorWidget: (context, url, error) => const ErrorImage(),
-              ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: CachedNetworkImage(
+              imageUrl: AppConstants.baseUrlImage + image,
+              fit: BoxFit.cover,
+              placeholder: (context, url) => const LoadingIndicator(),
+              errorWidget: (context, url, error) => const ErrorImage(),
             ),
           ),
         ),

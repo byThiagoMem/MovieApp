@@ -25,6 +25,7 @@ class CardHeader extends StatelessWidget {
           //Image background
           SizedBox(
             height: Sizes.height(context) * .29,
+            width: double.maxFinite,
             child: ClipRRect(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(Sizes.width(context) * .35),
@@ -64,16 +65,13 @@ class CardHeader extends StatelessWidget {
             height: Sizes.height(context) * .22,
             left: Sizes.width(context) * .03,
             bottom: 1,
-            child: Hero(
-              tag: 'banner${data.screenData.posterPath}',
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: CachedNetworkImage(
-                  imageUrl:
-                      AppConstants.baseUrlImage + data.screenData.posterPath,
-                  placeholder: (context, url) => const LoadingIndicator(),
-                  errorWidget: (context, url, error) => const ErrorImage(),
-                ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: CachedNetworkImage(
+                imageUrl:
+                    AppConstants.baseUrlImage + data.screenData.posterPath,
+                placeholder: (context, url) => const LoadingIndicator(),
+                errorWidget: (context, url, error) => const ErrorImage(),
               ),
             ),
           ),
