@@ -1,5 +1,6 @@
 import '../../../../core/model/result.dart';
-import '../../model/tv_show.dart';
+import '../../model/crew/tv_show_crew.dart';
+import '../../model/tv_show/tv_show.dart';
 import '../../repositories/tv_show/tv_show_repository.dart';
 import 'tv_show_service.dart';
 
@@ -25,4 +26,8 @@ class TvShowServiceImpl implements TvShowService {
   @override
   Future<Result<List<TvShow>>> getTopRatedTv() =>
       _tvShowRepository.getTopRatedTv();
+
+  @override
+  Future<Result<List<TvShowCrew>>> getCrewTvById({required String id}) =>
+      _tvShowRepository.getCrewTvById(id: id);
 }

@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 
 import '../../../../core/model/result.dart';
 import '../../../../movie_design_system/commom/utils/future_extension.dart';
+import '../../model/crew/movie_crew.dart';
 import '../../model/movie/movie.dart';
 import 'movies_repository.dart';
 
@@ -32,9 +33,16 @@ class MoviesRepositoryImpl implements MoviesRepository {
   }
 
   @override
-  Future<Result<List<Movie>>> getNowPlayingMovies() {
-    return _dio
+  Future<Result<List<Movie>>> getNowPlayingMovies() async {
+    return await _dio
         .get('/movie/now_playing')
         .fullResult((json) => Movie.fromMapList(json));
+  }
+
+  @override
+  Future<Result<List<MovieCrew>>> getCrewMovieById({required String id}) async {
+    return await _dio
+        .get('movie/$id/credits')
+        .fullResult((json) => MovieCrew.fromMapList(json));
   }
 }
