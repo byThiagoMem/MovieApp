@@ -11,6 +11,7 @@ import '../../../../../movie_design_system/widgets/banner/custom_banner.dart';
 import '../../../../../movie_design_system/widgets/error/error_widget.dart';
 import '../../../../../movie_design_system/widgets/error/no_internet_connection.dart';
 import '../../../../../movie_design_system/widgets/shimmer/shimmer_card.dart';
+import '../../../model/movie/movie.dart';
 import 'popular_movies_store.dart';
 
 class PopularMovies extends StatefulWidget {
@@ -20,19 +21,18 @@ class PopularMovies extends StatefulWidget {
   State<PopularMovies> createState() => _PopularMoviesState();
 }
 
-class _PopularMoviesState extends State<PopularMovies> {
-  final _store = Modular.get<PopularMoviesStore>();
-
+class _PopularMoviesState
+    extends ModularState<PopularMovies, PopularMoviesStore> {
   @override
   void initState() {
-    _store.load();
+    store.load();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Observer(
-      builder: (_) => _store.popularMovies.handleStateLoadable(
+      builder: (_) => store.popularMovies.handleStateLoadable(
         () {
           return const Center(child: ShimmerCard());
         },
@@ -54,7 +54,10 @@ class _PopularMoviesState extends State<PopularMovies> {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () => Modular.to.pushNamed(
+                        '${AppRoutes.discover}/Popular&Movies',
+                        arguments: Movie.fromListScreenData(movie: data),
+                      ),
                       icon: Icon(
                         Icons.arrow_forward_ios_rounded,
                         size: Sizes.dp15(context),
@@ -100,7 +103,7 @@ class _PopularMoviesState extends State<PopularMovies> {
           if (error is DioFailure) {
             return NoInternetConnection(
               message: AppConstants.noInternetConnection,
-              onPressed: () => _store.load(),
+              onPressed: () => store.load(),
             );
           }
           if (error is DataFailure) {

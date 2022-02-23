@@ -64,6 +64,8 @@ class _MovieBannerState extends State<MovieBanner> {
                 () => _currentIndex = index,
               ),
               routeNameDetail: AppRoutes.overviewMoviePage,
+              routeNameAll: AppRoutes.discover,
+              isFromMovie: true,
             ),
           );
         },

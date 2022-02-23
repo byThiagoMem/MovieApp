@@ -1,3 +1,5 @@
+import '../../../../movie_design_system/commom/utils/arguments.dart';
+
 class Movie {
   final int id;
   final String title;
@@ -38,4 +40,19 @@ class Movie {
 
   static List<Movie> fromMapList(Map<String, dynamic> json) =>
       List<Movie>.from(json['results'].map((list) => Movie.fromMap(list)));
+
+  static List<ScreenData> fromListScreenData({required List<Movie> movie}) => [
+        ...movie
+            .map((e) => ScreenData(
+                id: e.id,
+                title: e.title,
+                overview: e.overview,
+                releaseDate: e.releaseDate,
+                genreIds: e.genreIds,
+                voteAverage: e.voteAverage,
+                popularity: e.popularity,
+                posterPath: e.posterPath,
+                backdropPath: e.backdropPath))
+            .toList(),
+      ];
 }

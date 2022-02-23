@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../movie_design_system/commom/utils/utils.dart';
-import '../../../../movie_design_system/widgets/banner/card_header.dart';
+import '../../../../movie_design_system/widgets/card/card_header.dart';
 import '../widgets/crew/crew_tv_show.dart';
 
 class OverviewTvShowPage extends StatefulWidget {

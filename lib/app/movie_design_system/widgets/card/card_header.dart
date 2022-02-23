@@ -92,13 +92,6 @@ class CardHeader extends StatelessWidget {
                     fontSize: 18,
                   ),
                 ),
-                Text(
-                  data.screenData.title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
-                ),
                 SizedBox(height: Sizes.dp10(context)),
                 RatingStars(
                   maxValue: 10,
@@ -118,7 +111,7 @@ class CardHeader extends StatelessWidget {
                       );
                     },
                     separatorBuilder: (_, __) => SizedBox(
-                      width: Sizes.dp10(context),
+                      width: Sizes.dp4(context),
                     ),
                     scrollDirection: Axis.horizontal,
                     itemCount: data.screenData.genreIds.length,

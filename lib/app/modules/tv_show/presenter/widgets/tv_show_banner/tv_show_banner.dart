@@ -61,6 +61,8 @@ class _TvShowBannerState extends State<TvShowBanner> {
                 () => _currentIndex = index,
               ),
               routeNameDetail: AppRoutes.overviewTvPage,
+              routeNameAll: AppRoutes.discover,
+              isFromMovie: false,
             ),
           );
         },

@@ -11,6 +11,7 @@ import '../../../../../movie_design_system/widgets/banner/custom_banner.dart';
 import '../../../../../movie_design_system/widgets/error/error_widget.dart';
 import '../../../../../movie_design_system/widgets/error/no_internet_connection.dart';
 import '../../../../../movie_design_system/widgets/shimmer/shimmer_card.dart';
+import '../../../model/movie/movie.dart';
 import 'top_rated_movies_store.dart';
 
 class TopRatedMovies extends StatefulWidget {
@@ -54,7 +55,10 @@ class _TopRatedMoviesState extends State<TopRatedMovies> {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () => Modular.to.pushNamed(
+                        '${AppRoutes.discover}/Top&Rated&Movies',
+                        arguments: Movie.fromListScreenData(movie: data),
+                      ),
                       icon: Icon(
                         Icons.arrow_forward_ios_rounded,
                         size: Sizes.dp15(context),

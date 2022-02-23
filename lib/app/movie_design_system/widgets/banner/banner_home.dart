@@ -14,8 +14,9 @@ class BannerHome extends StatelessWidget {
   final List<ScreenData> data;
   final int currentIndex;
   final Function(int index, CarouselPageChangedReason reason) onPageChanged;
+  final bool isFromMovie;
   final String routeNameDetail;
-  //final String routeNameAll;
+  final String routeNameAll;
 
   const BannerHome({
     Key? key,
@@ -23,7 +24,8 @@ class BannerHome extends StatelessWidget {
     required this.currentIndex,
     required this.onPageChanged,
     required this.routeNameDetail,
-    //required this.routeNameAll,
+    required this.routeNameAll,
+    required this.isFromMovie,
   }) : super(key: key);
 
   @override
@@ -116,7 +118,11 @@ class BannerHome extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                String _isFrom =
+                    isFromMovie ? 'Now&playing&Movies' : 'On&The&Air';
+                Modular.to.pushNamed('$routeNameAll/$_isFrom', arguments: data);
+              },
               child: Text(
                 'See all',
                 style: TextStyle(
