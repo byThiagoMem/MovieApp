@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -5,7 +6,10 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../../core/model/failure.dart';
 import '../../movie_design_system/commom/styles/color_palettes.dart';
 import '../../movie_design_system/commom/utils/utils.dart';
+import '../../movie_design_system/widgets/card/card_presentation.dart';
 import '../../movie_design_system/widgets/error/error.dart';
+import '../../movie_design_system/widgets/error/error_image.dart';
+import '../../movie_design_system/widgets/progress/loading_indicator.dart';
 import '../../movie_design_system/widgets/shimmer/shimmer_card.dart';
 import 'presentation_store.dart';
 
@@ -37,8 +41,43 @@ class PresentationPageState
             if (loading) {
               return const Center(child: ShimmerCard());
             } else {
-              return Stack(
-                children: [],
+              return Container(
+                height: Sizes.height(context),
+                width: Sizes.width(context),
+                child: Stack(
+                  children: [
+                    CachedNetworkImage(
+                      imageUrl: AppConstants.urlImage + data[0].backdropPath,
+                      width: Sizes.width(context),
+                      height: Sizes.height(context),
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => const LoadingIndicator(),
+                      errorWidget: (context, url, error) => const ErrorImage(),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [
+                              ColorPalettes.black.withOpacity(.9),
+                              ColorPalettes.black.withOpacity(.3),
+                              ColorPalettes.black.withOpacity(.95)
+                            ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            stops: [0.1, 0.5, 0.9]),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: CardPresentation(
+                        title: data[0].title,
+                        image: data[0].posterPath,
+                        genres: data[0].genreIds,
+                        voteAverage: data[0].voteAverage,
+                      ),
+                    )
+                  ],
+                ),
               );
             }
           },
