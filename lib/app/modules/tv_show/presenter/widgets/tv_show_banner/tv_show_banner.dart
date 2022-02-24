@@ -11,7 +11,8 @@ import '../../../../../movie_design_system/widgets/shimmer/shimmer_banner.dart';
 import 'tv_show_banner_store.dart';
 
 class TvShowBanner extends StatefulWidget {
-  const TvShowBanner({Key? key}) : super(key: key);
+  final String title;
+  const TvShowBanner({Key? key, this.title = 'Aring&Today'}) : super(key: key);
 
   @override
   _TvShowBannerState createState() => _TvShowBannerState();
@@ -53,6 +54,7 @@ class _TvShowBannerState extends State<TvShowBanner> {
                     popularity: e.popularity,
                     posterPath: e.posterPath,
                     backdropPath: e.backdropPath,
+                    isMovie: false,
                   ),
                 ),
               ),
@@ -62,7 +64,7 @@ class _TvShowBannerState extends State<TvShowBanner> {
               ),
               routeNameDetail: AppRoutes.overviewTvPage,
               routeNameAll: AppRoutes.discover,
-              isFromMovie: false,
+              title: widget.title,
             ),
           );
         },

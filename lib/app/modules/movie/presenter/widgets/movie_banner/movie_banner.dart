@@ -3,9 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../../core/model/failure.dart';
-import '../../../../../movie_design_system/commom/utils/app_constants.dart';
-import '../../../../../movie_design_system/commom/utils/app_routes.dart';
-import '../../../../../movie_design_system/commom/utils/arguments.dart';
+import '../../../../../movie_design_system/commom/utils/utils.dart';
 import '../../../../../movie_design_system/widgets/banner/banner_home.dart';
 import '../../../../../movie_design_system/widgets/error/error_widget.dart';
 import '../../../../../movie_design_system/widgets/error/no_internet_connection.dart';
@@ -13,7 +11,8 @@ import '../../../../../movie_design_system/widgets/shimmer/shimmer_banner.dart';
 import 'movie_banner_store.dart';
 
 class MovieBanner extends StatefulWidget {
-  const MovieBanner({Key? key}) : super(key: key);
+  final String title;
+  const MovieBanner({Key? key, this.title = 'Now&Playing&Movies'}) : super(key: key);
 
   @override
   State<MovieBanner> createState() => _MovieBannerState();
@@ -56,6 +55,7 @@ class _MovieBannerState extends State<MovieBanner> {
                     popularity: e.popularity,
                     posterPath: e.posterPath,
                     backdropPath: e.backdropPath,
+                    isMovie: true,
                   ),
                 ),
               ),
@@ -65,7 +65,7 @@ class _MovieBannerState extends State<MovieBanner> {
               ),
               routeNameDetail: AppRoutes.overviewMoviePage,
               routeNameAll: AppRoutes.discover,
-              isFromMovie: true,
+              title: widget.title,
             ),
           );
         },

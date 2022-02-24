@@ -41,8 +41,10 @@ class OverviewMoviePageState extends State<OverviewMoviePage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: Sizes.dp15(context),
+              padding: EdgeInsets.only(
+                left: Sizes.dp15(context),
+                right: Sizes.dp15(context),
+                bottom: Sizes.dp15(context),
               ),
               child: CrewMovie(id: widget.data.screenData.id.toString()),
             ),

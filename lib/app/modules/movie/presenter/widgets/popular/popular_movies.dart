@@ -3,10 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../../core/model/failure.dart';
-import '../../../../../movie_design_system/commom/utils/app_constants.dart';
-import '../../../../../movie_design_system/commom/utils/app_routes.dart';
-import '../../../../../movie_design_system/commom/utils/arguments.dart';
-import '../../../../../movie_design_system/commom/utils/sizes.dart';
+import '../../../../../movie_design_system/commom/utils/utils.dart';
 import '../../../../../movie_design_system/widgets/banner/custom_banner.dart';
 import '../../../../../movie_design_system/widgets/error/error_widget.dart';
 import '../../../../../movie_design_system/widgets/error/no_internet_connection.dart';
@@ -15,14 +12,14 @@ import '../../../model/movie/movie.dart';
 import 'popular_movies_store.dart';
 
 class PopularMovies extends StatefulWidget {
-  const PopularMovies({Key? key}) : super(key: key);
+  final String? title;
+  const PopularMovies({Key? key, this.title = 'Popular&Movies'}) : super(key: key);
 
   @override
   State<PopularMovies> createState() => _PopularMoviesState();
 }
 
-class _PopularMoviesState
-    extends ModularState<PopularMovies, PopularMoviesStore> {
+class _PopularMoviesState extends ModularState<PopularMovies, PopularMoviesStore> {
   @override
   void initState() {
     store.load();
@@ -55,7 +52,7 @@ class _PopularMoviesState
                     ),
                     IconButton(
                       onPressed: () => Modular.to.pushNamed(
-                        '${AppRoutes.discover}/Popular&Movies',
+                        '${AppRoutes.discover}/${widget.title}',
                         arguments: Movie.fromListScreenData(movie: data),
                       ),
                       icon: Icon(
@@ -84,6 +81,7 @@ class _PopularMoviesState
                               popularity: data[index].popularity,
                               posterPath: data[index].posterPath,
                               backdropPath: data[index].backdropPath,
+                              isMovie: true,
                             ),
                           ),
                         ),

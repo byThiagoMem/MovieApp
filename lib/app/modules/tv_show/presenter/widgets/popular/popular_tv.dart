@@ -12,7 +12,8 @@ import '../../../model/tv_show/tv_show.dart';
 import 'popular_tv_store.dart';
 
 class PopularTv extends StatefulWidget {
-  const PopularTv({Key? key}) : super(key: key);
+  final String title;
+  const PopularTv({Key? key, this.title = 'Popular'}) : super(key: key);
 
   @override
   _PopularTvState createState() => _PopularTvState();
@@ -53,7 +54,7 @@ class _PopularTvState extends State<PopularTv> {
                     ),
                     IconButton(
                       onPressed: () => Modular.to.pushNamed(
-                        '${AppRoutes.discover}/Popular',
+                        '${AppRoutes.discover}/${widget.title}',
                         arguments: TvShow.fromListScreenData(movie: data),
                       ),
                       icon: Icon(
@@ -82,6 +83,7 @@ class _PopularTvState extends State<PopularTv> {
                               popularity: data[index].popularity,
                               posterPath: data[index].posterPath,
                               backdropPath: data[index].backdropPath,
+                              isMovie: false,
                             ),
                           ),
                         ),

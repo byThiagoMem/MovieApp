@@ -45,8 +45,10 @@ class OverviewTvShowPageState extends State<OverviewTvShowPage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: Sizes.dp15(context),
+              padding: EdgeInsets.only(
+                left: Sizes.dp15(context),
+                right: Sizes.dp15(context),
+                bottom: Sizes.dp15(context),
               ),
               child: CrewTvShow(id: widget.data.screenData.id.toString()),
             ),

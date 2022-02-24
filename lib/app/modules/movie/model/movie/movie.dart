@@ -32,18 +32,16 @@ class Movie {
       voteAverage: map['vote_average']?.toDouble() ?? 0.0,
       popularity: map['popularity']?.toDouble() ?? 0.0,
       posterPath: map['poster_path'],
-      backdropPath: map['backdrop_path'] != null
-          ? map['backdrop_path']
-          : map['poster_path'] ?? '',
+      backdropPath: map['backdrop_path'] != null ? map['backdrop_path'] : map['poster_path'] ?? '',
     );
   }
 
-  static List<Movie> fromMapList(Map<String, dynamic> json) =>
-      List<Movie>.from(json['results'].map((list) => Movie.fromMap(list)));
+  static List<Movie> fromMapList(Map<String, dynamic> json) => List<Movie>.from(json['results'].map((list) => Movie.fromMap(list)));
 
   static List<ScreenData> fromListScreenData({required List<Movie> movie}) => [
         ...movie
-            .map((e) => ScreenData(
+            .map(
+              (e) => ScreenData(
                 id: e.id,
                 title: e.title,
                 overview: e.overview,
@@ -52,7 +50,10 @@ class Movie {
                 voteAverage: e.voteAverage,
                 popularity: e.popularity,
                 posterPath: e.posterPath,
-                backdropPath: e.backdropPath))
+                backdropPath: e.backdropPath,
+                isMovie: true,
+              ),
+            )
             .toList(),
       ];
 }

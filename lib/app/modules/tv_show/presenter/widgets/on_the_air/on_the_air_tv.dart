@@ -12,7 +12,8 @@ import '../../../model/tv_show/tv_show.dart';
 import 'on_the_air_tv_store.dart';
 
 class OnTheAirTv extends StatefulWidget {
-  const OnTheAirTv({Key? key}) : super(key: key);
+  final String title;
+  const OnTheAirTv({Key? key, this.title = 'On&The&Air'}) : super(key: key);
 
   @override
   _OnTheAirTvState createState() => _OnTheAirTvState();
@@ -53,7 +54,7 @@ class _OnTheAirTvState extends State<OnTheAirTv> {
                     ),
                     IconButton(
                       onPressed: () => Modular.to.pushNamed(
-                        '${AppRoutes.discover}/On&The&Air',
+                        '${AppRoutes.discover}/${widget.title}',
                         arguments: TvShow.fromListScreenData(movie: data),
                       ),
                       icon: Icon(
@@ -82,6 +83,7 @@ class _OnTheAirTvState extends State<OnTheAirTv> {
                               popularity: data[index].popularity,
                               posterPath: data[index].posterPath,
                               backdropPath: data[index].backdropPath,
+                              isMovie: false,
                             ),
                           ),
                         ),

@@ -15,7 +15,8 @@ import '../../../model/movie/movie.dart';
 import 'top_rated_movies_store.dart';
 
 class TopRatedMovies extends StatefulWidget {
-  const TopRatedMovies({Key? key}) : super(key: key);
+  final String? title;
+  const TopRatedMovies({Key? key, this.title = 'Top&Rated&&Movies'}) : super(key: key);
 
   @override
   _TopRatedMoviesState createState() => _TopRatedMoviesState();
@@ -56,7 +57,7 @@ class _TopRatedMoviesState extends State<TopRatedMovies> {
                     ),
                     IconButton(
                       onPressed: () => Modular.to.pushNamed(
-                        '${AppRoutes.discover}/Top&Rated&Movies',
+                        '${AppRoutes.discover}/${widget.title}',
                         arguments: Movie.fromListScreenData(movie: data),
                       ),
                       icon: Icon(
@@ -85,6 +86,7 @@ class _TopRatedMoviesState extends State<TopRatedMovies> {
                               popularity: data[index].popularity,
                               posterPath: data[index].posterPath,
                               backdropPath: data[index].backdropPath,
+                              isMovie: true,
                             ),
                           ),
                         ),

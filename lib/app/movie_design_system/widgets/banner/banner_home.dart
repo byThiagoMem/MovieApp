@@ -14,7 +14,7 @@ class BannerHome extends StatelessWidget {
   final List<ScreenData> data;
   final int currentIndex;
   final Function(int index, CarouselPageChangedReason reason) onPageChanged;
-  final bool isFromMovie;
+  final String title;
   final String routeNameDetail;
   final String routeNameAll;
 
@@ -25,7 +25,7 @@ class BannerHome extends StatelessWidget {
     required this.onPageChanged,
     required this.routeNameDetail,
     required this.routeNameAll,
-    required this.isFromMovie,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -67,15 +67,11 @@ class BannerHome extends StatelessWidget {
                 footer: Container(
                   decoration: BoxDecoration(
                     color: ColorPalettes.whiteSemiTransparent,
-                    borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(10),
-                        bottomRight: Radius.circular(10)),
+                    borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
                   ),
                   padding: EdgeInsets.all(Sizes.dp5(context)),
                   child: Text(
-                    data[index].title.isNotEmpty
-                        ? data[index].title
-                        : 'No Tv Name',
+                    data[index].title.isNotEmpty ? data[index].title : 'No Tv Name',
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -108,9 +104,7 @@ class BannerHome extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: currentIndex == index
-                            ? ColorPalettes.darkAccent
-                            : ColorPalettes.grey,
+                        color: currentIndex == index ? ColorPalettes.darkAccent : ColorPalettes.grey,
                       ),
                     ),
                   ),
@@ -119,9 +113,7 @@ class BannerHome extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                String _isFrom =
-                    isFromMovie ? 'Now&playing&Movies' : 'On&The&Air';
-                Modular.to.pushNamed('$routeNameAll/$_isFrom', arguments: data);
+                Modular.to.pushNamed('$routeNameAll/$title', arguments: data);
               },
               child: Text(
                 'See all',

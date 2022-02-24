@@ -33,18 +33,16 @@ class TvShow {
       voteAverage: map['vote_average']?.toDouble() ?? 0.0,
       popularity: map['popularity']?.toDouble() ?? 0.0,
       posterPath: map['poster_path'] ?? '',
-      backdropPath: map['backdrop_path'] != null
-          ? map['backdrop_path']
-          : map['poster_path'] ?? '',
+      backdropPath: map['backdrop_path'] != null ? map['backdrop_path'] : map['poster_path'] ?? '',
     );
   }
 
-  static List<TvShow> fromMapList(Map<String, dynamic> json) =>
-      List<TvShow>.from(json['results'].map((list) => TvShow.fromMap(list)));
+  static List<TvShow> fromMapList(Map<String, dynamic> json) => List<TvShow>.from(json['results'].map((list) => TvShow.fromMap(list)));
 
   static List<ScreenData> fromListScreenData({required List<TvShow> movie}) => [
         ...movie
-            .map((e) => ScreenData(
+            .map(
+              (e) => ScreenData(
                 id: e.id,
                 title: e.title,
                 overview: e.overview,
@@ -53,7 +51,10 @@ class TvShow {
                 voteAverage: e.voteAverage,
                 popularity: e.popularity,
                 posterPath: e.posterPath,
-                backdropPath: e.backdropPath))
+                backdropPath: e.backdropPath,
+                isMovie: false,
+              ),
+            )
             .toList(),
       ];
 }
