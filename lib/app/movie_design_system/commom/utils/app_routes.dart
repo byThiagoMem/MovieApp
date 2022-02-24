@@ -5,4 +5,5 @@ class AppRoutes {
   static const String discover = '/discover';
   static const String overviewMoviePage = '/overview_movie_page/';
   static const String overviewTvPage = '/overview_tv_page/';
+  static const String presentation = '/presentation/';
 }
