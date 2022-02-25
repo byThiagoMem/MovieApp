@@ -19,14 +19,11 @@ abstract class _PresentationStoreBase with Store {
   final pageController = PageController();
 
   @observable
-  int _currentPage = 0;
-
-  @action
-  int get currentPage => _currentPage;
+  int currentPage = 0;
 
   @action
   void setCurrentPage(int value) {
-    _currentPage = value;
+    currentPage = value;
     pageController.jumpToPage(value);
   }
 

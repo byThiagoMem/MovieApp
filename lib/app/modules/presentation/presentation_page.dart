@@ -49,45 +49,47 @@ class PresentationPageState
                   return Container(
                     height: Sizes.height(context),
                     width: Sizes.width(context),
-                    child: Stack(
-                      children: [
-                        CachedNetworkImage(
-                          imageUrl: AppConstants.urlImage +
-                              data[store.currentPage].backdropPath,
-                          width: Sizes.width(context),
-                          height: Sizes.height(context),
-                          fit: BoxFit.cover,
-                          placeholder: (context, url) =>
-                              const LoadingIndicator(),
-                          errorWidget: (context, url, error) =>
-                              const ErrorImage(),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                                colors: [
-                                  ColorPalettes.black.withOpacity(.9),
-                                  ColorPalettes.black.withOpacity(.3),
-                                  ColorPalettes.black.withOpacity(.95)
-                                ],
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                stops: [0.1, 0.5, 0.9]),
+                    child: Observer(builder: (_) {
+                      return Stack(
+                        children: [
+                          CachedNetworkImage(
+                            imageUrl: AppConstants.urlImage +
+                                data[store.currentPage].backdropPath,
+                            width: Sizes.width(context),
+                            height: Sizes.height(context),
+                            fit: BoxFit.cover,
+                            placeholder: (context, url) =>
+                                const LoadingIndicator(),
+                            errorWidget: (context, url, error) =>
+                                const ErrorImage(),
                           ),
-                        ),
-                        Align(
-                          alignment: Alignment.center,
-                          child: CardPresentation(
-                            title: data[store.currentPage].title,
-                            image: data[store.currentPage].posterPath,
-                            genres: data[store.currentPage].genreIds,
-                            voteAverage: data[store.currentPage].voteAverage,
-                            index: index,
-                            length: data.length,
+                          Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                  colors: [
+                                    ColorPalettes.black.withOpacity(.9),
+                                    ColorPalettes.black.withOpacity(.3),
+                                    ColorPalettes.black.withOpacity(.95)
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  stops: [0.1, 0.5, 0.9]),
+                            ),
                           ),
-                        )
-                      ],
-                    ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: CardPresentation(
+                              title: data[store.currentPage].title,
+                              image: data[store.currentPage].posterPath,
+                              genres: data[store.currentPage].genreIds,
+                              voteAverage: data[store.currentPage].voteAverage,
+                              index: index,
+                              length: data.length,
+                            ),
+                          )
+                        ],
+                      );
+                    }),
                   );
                 },
               );
