@@ -46,6 +46,7 @@ class PresentationPageState
                 onPageChanged: (value) => store.setCurrentPage(value),
                 controller: store.pageController,
                 itemCount: data.length,
+                physics: const ClampingScrollPhysics(),
                 itemBuilder: (constex, index) {
                   return Container(
                     height: Sizes.height(context),
