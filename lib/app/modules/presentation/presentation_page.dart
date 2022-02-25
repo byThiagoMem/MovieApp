@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -53,7 +55,7 @@ class PresentationPageState
                         children: [
                           CachedNetworkImage(
                             imageUrl: AppConstants.urlImage +
-                                data[store.currentPage].backdropPath,
+                                data[index].backdropPath,
                             width: Sizes.width(context),
                             height: Sizes.height(context),
                             fit: BoxFit.cover,
@@ -62,13 +64,21 @@ class PresentationPageState
                             errorWidget: (context, url, error) =>
                                 const ErrorImage(),
                           ),
+                          Positioned.fill(
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                              child: Container(
+                                color: Colors.black.withOpacity(0),
+                              ),
+                            ),
+                          ),
                           Container(
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
                                   colors: [
-                                    ColorPalettes.black.withOpacity(.9),
-                                    ColorPalettes.black.withOpacity(.3),
-                                    ColorPalettes.black.withOpacity(.95)
+                                    ColorPalettes.black.withOpacity(.5),
+                                    ColorPalettes.black.withOpacity(.1),
+                                    ColorPalettes.black.withOpacity(.5)
                                   ],
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
@@ -85,7 +95,39 @@ class PresentationPageState
                               index: index,
                               length: data.length,
                             ),
-                          )
+                          ),
+                          Positioned(
+                            top: 0,
+                            right: 0,
+                            child: Container(
+                              margin: EdgeInsets.only(
+                                top: Sizes.width(context) / 7,
+                                right: Sizes.dp30(context),
+                              ),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.baseline,
+                                textBaseline: TextBaseline.alphabetic,
+                                children: <Widget>[
+                                  Text(
+                                    (index + 1).toString(),
+                                    style: TextStyle(
+                                      color: ColorPalettes.white,
+                                      fontSize: Sizes.dp25(context),
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    '/${data.length}',
+                                    style: TextStyle(
+                                      color: ColorPalettes.white,
+                                      fontSize: Sizes.dp16(context),
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
                         ],
                       );
                     }),

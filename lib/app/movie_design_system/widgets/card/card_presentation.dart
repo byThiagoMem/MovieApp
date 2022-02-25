@@ -28,86 +28,63 @@ class CardPresentation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Stack(
-        children: [
-          Positioned(
-            top: Sizes.dp30(context),
-            right: Sizes.dp30(context),
-            child: Text.rich(
-              TextSpan(
-                text: (index + 1).toString(),
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-                children: [
-                  TextSpan(
-                    text: '/${length.toString()}',
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        ClipRRect(
+          borderRadius: BorderRadius.circular(Sizes.dp20(context)),
+          child: CachedNetworkImage(
+            imageUrl: AppConstants.urlImage + image,
+            width: Sizes.width(context) / 1.7,
+            placeholder: (context, url) => const LoadingIndicator(),
+            errorWidget: (context, url, error) => const ErrorImage(),
           ),
-          Column(
+        ),
+        SizedBox(
+          height: Sizes.height(context) * .02,
+        ),
+        Text(
+          title,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: Sizes.width(context) / 14,
+              fontWeight: FontWeight.w600),
+        ),
+        SizedBox(
+          height: Sizes.height(context) * .01,
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: Sizes.height(context) * .3,
-                width: Sizes.width(context) * .4,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(Sizes.dp15(context)),
-                  child: CachedNetworkImage(
-                    imageUrl: AppConstants.urlImage + image,
-                    width: Sizes.width(context),
-                    height: Sizes.height(context),
-                    fit: BoxFit.fill,
-                    placeholder: (context, url) => const LoadingIndicator(),
-                    errorWidget: (context, url, error) => const ErrorImage(),
-                  ),
-                ),
-              ),
-              SizedBox(height: Sizes.dp10(context)),
-              Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w600,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: Sizes.dp10(context)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: genres
-                    .map((e) => GenreTile(title: Genres.genres[e]!))
-                    .toList(),
-              ),
-              SizedBox(height: Sizes.dp10(context)),
-              Text(
-                voteAverage.toString(),
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              SizedBox(height: Sizes.dp4(context)),
-              RatingStars(
-                valueLabelVisibility: false,
-                maxValue: 10,
-                starColor: ColorPalettes.yellow,
-                value: voteAverage,
-                starOffColor: ColorPalettes.grey,
-                starSize: 14,
-              ),
-            ],
+            children:
+                genres.map((e) => GenreTile(title: Genres.genres[e]!)).toList(),
           ),
-        ],
-      ),
+        ),
+        SizedBox(
+          height: Sizes.height(context) * .01,
+        ),
+        SizedBox(
+          height: Sizes.height(context) * .005,
+        ),
+        Text(
+          voteAverage.toString(),
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        SizedBox(height: Sizes.dp4(context)),
+        RatingStars(
+          valueLabelVisibility: false,
+          maxValue: 10,
+          starColor: ColorPalettes.yellow,
+          value: voteAverage,
+          starOffColor: ColorPalettes.grey,
+          starSize: 14,
+        ),
+      ],
     );
   }
 }
