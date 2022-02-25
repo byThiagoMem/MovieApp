@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
@@ -14,6 +15,20 @@ abstract class _PresentationStoreBase with Store {
 
   ShimmerState<List<Presentation>> nowPlayingMovies =
       ShimmerState<List<Presentation>>();
+
+  final pageController = PageController();
+
+  @observable
+  int _currentPage = 0;
+
+  @action
+  int get currentPage => _currentPage;
+
+  @action
+  void setCurrentPage(int value) {
+    _currentPage = value;
+    pageController.jumpToPage(value);
+  }
 
   Future<void> load() async {
     (await _presentationService.getNowPlayingMovies()).result(
