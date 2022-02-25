@@ -8,7 +8,6 @@ import '../../movie_design_system/commom/styles/color_palettes.dart';
 import '../../movie_design_system/commom/utils/utils.dart';
 import '../../movie_design_system/widgets/card/card_presentation.dart';
 import '../../movie_design_system/widgets/error/error.dart';
-import '../../movie_design_system/widgets/error/error_image.dart';
 import '../../movie_design_system/widgets/progress/loading_indicator.dart';
 import '../../movie_design_system/widgets/shimmer/shimmer_card.dart';
 import 'presentation_store.dart';
