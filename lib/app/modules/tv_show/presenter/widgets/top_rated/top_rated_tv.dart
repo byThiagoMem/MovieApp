@@ -8,10 +8,12 @@ import '../../../../../movie_design_system/widgets/banner/custom_banner.dart';
 import '../../../../../movie_design_system/widgets/error/error_widget.dart';
 import '../../../../../movie_design_system/widgets/error/no_internet_connection.dart';
 import '../../../../../movie_design_system/widgets/shimmer/shimmer_card.dart';
+import '../../../model/tv_show/tv_show.dart';
 import 'top_rated_tv_store.dart';
 
 class TopRatedTv extends StatefulWidget {
-  const TopRatedTv({Key? key}) : super(key: key);
+  final String title;
+  const TopRatedTv({Key? key, this.title = 'Top&Rated'}) : super(key: key);
 
   @override
   _TopRatedTvState createState() => _TopRatedTvState();
@@ -51,7 +53,10 @@ class _TopRatedTvState extends State<TopRatedTv> {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () => Modular.to.pushNamed(
+                        '${AppRoutes.discover}/${widget.title}',
+                        arguments: TvShow.fromListScreenData(movie: data),
+                      ),
                       icon: Icon(
                         Icons.arrow_forward_ios_rounded,
                         size: Sizes.dp15(context),
@@ -78,6 +83,7 @@ class _TopRatedTvState extends State<TopRatedTv> {
                               popularity: data[index].popularity,
                               posterPath: data[index].posterPath,
                               backdropPath: data[index].backdropPath,
+                              isMovie: false,
                             ),
                           ),
                         ),

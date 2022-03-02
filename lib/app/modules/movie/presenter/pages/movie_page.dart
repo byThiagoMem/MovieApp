@@ -33,7 +33,10 @@ class _MoviePageState extends State<MoviePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Movies'),
+        title: const Text(
+          'Movies',
+          style: TextStyle(fontWeight: FontWeight.w600),
+        ),
         automaticallyImplyLeading: false,
       ),
       body: RefreshIndicator(

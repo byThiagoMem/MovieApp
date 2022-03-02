@@ -7,10 +7,10 @@ import '../../commom/utils/sizes.dart';
 import '../error/error_image.dart';
 import '../progress/loading_indicator.dart';
 
-class CrewCard extends StatelessWidget {
+class CardCrew extends StatelessWidget {
   final String name;
   final String image;
-  const CrewCard({Key? key, required this.name, required this.image})
+  const CardCrew({Key? key, required this.name, required this.image})
       : super(key: key);
 
   @override

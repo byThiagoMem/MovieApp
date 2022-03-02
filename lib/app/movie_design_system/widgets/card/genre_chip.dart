@@ -12,6 +12,7 @@ class GenreTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(Sizes.dp5(context)),
+      margin: EdgeInsets.only(right: Sizes.dp7(context)),
       decoration: BoxDecoration(
         border: Border.all(color: ColorPalettes.grey, width: 1),
         borderRadius: BorderRadius.circular(12),

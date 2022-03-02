@@ -8,10 +8,12 @@ import '../../../../../movie_design_system/widgets/banner/custom_banner.dart';
 import '../../../../../movie_design_system/widgets/error/error_widget.dart';
 import '../../../../../movie_design_system/widgets/error/no_internet_connection.dart';
 import '../../../../../movie_design_system/widgets/shimmer/shimmer_card.dart';
+import '../../../model/tv_show/tv_show.dart';
 import 'popular_tv_store.dart';
 
 class PopularTv extends StatefulWidget {
-  const PopularTv({Key? key}) : super(key: key);
+  final String title;
+  const PopularTv({Key? key, this.title = 'Popular'}) : super(key: key);
 
   @override
   _PopularTvState createState() => _PopularTvState();
@@ -51,7 +53,10 @@ class _PopularTvState extends State<PopularTv> {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () => Modular.to.pushNamed(
+                        '${AppRoutes.discover}/${widget.title}',
+                        arguments: TvShow.fromListScreenData(movie: data),
+                      ),
                       icon: Icon(
                         Icons.arrow_forward_ios_rounded,
                         size: Sizes.dp15(context),
@@ -78,6 +83,7 @@ class _PopularTvState extends State<PopularTv> {
                               popularity: data[index].popularity,
                               posterPath: data[index].posterPath,
                               backdropPath: data[index].backdropPath,
+                              isMovie: false,
                             ),
                           ),
                         ),

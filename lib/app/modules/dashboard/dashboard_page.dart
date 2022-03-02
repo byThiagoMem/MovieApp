@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../movie_design_system/commom/styles/color_palettes.dart';
+import '../../movie_design_system/commom/utils/app_routes.dart';
 import '../../movie_design_system/commom/utils/sizes.dart';
 import '../movie/movie_module.dart';
 import '../tv_show/tvShow_module.dart';
@@ -33,7 +34,7 @@ class DashboardPageState extends State<DashboardPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         backgroundColor: ColorPalettes.darkBN,
-        onPressed: () {},
+        onPressed: () => Modular.to.pushNamed(AppRoutes.presentation),
         child: Icon(
           Icons.location_searching,
           color: ColorPalettes.darkAccent,

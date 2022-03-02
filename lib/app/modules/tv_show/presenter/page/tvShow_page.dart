@@ -26,7 +26,10 @@ class TvShowPageState extends State<TvShowPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tv Show'),
+        title: const Text(
+          'Tv Show',
+          style: TextStyle(fontWeight: FontWeight.w600),
+        ),
         automaticallyImplyLeading: false,
       ),
       body: RefreshIndicator(

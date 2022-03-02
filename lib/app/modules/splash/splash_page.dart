@@ -26,7 +26,7 @@ class _SplashPageState extends State<SplashPage>
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(milliseconds: 1999))
+    Future.delayed(const Duration(milliseconds: 2300))
         .then((_) => Modular.to.navigate(AppRoutes.dashboard));
     return Scaffold(
       body: Stack(
@@ -36,28 +36,40 @@ class _SplashPageState extends State<SplashPage>
             ImagesAssets.background,
             fit: BoxFit.fill,
           ),
-          Builder(
-            builder: (context) {
-              return AnimatedBuilder(
-                animation: _controller,
-                builder: (_, __) {
-                  return Center(
-                    child: SizedBox(
-                      height: 60,
-                      width: 60,
-                      child: CircularProgressIndicator(
-                        value: _controller.value,
-                        strokeWidth: 2,
-                        color: ColorPalettes.getColorCircleProgress(
-                          _controller.value * 10,
+          Container(
+            color: ColorPalettes.darkBG.withOpacity(.8),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                ImagesAssets.logo,
+                width: Sizes.width(context) * .5,
+              ),
+              Builder(
+                builder: (context) {
+                  return AnimatedBuilder(
+                    animation: _controller,
+                    builder: (_, __) {
+                      return ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child: SizedBox(
+                          width: Sizes.width(context) * .45,
+                          child: LinearProgressIndicator(
+                            backgroundColor: ColorPalettes.white,
+                            value: _controller.value,
+                            color: ColorPalettes.getColorCircleProgress(
+                              _controller.value * 10,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
                   );
                 },
-              );
-            },
-          )
+              ),
+            ],
+          ),
         ],
       ),
     );
