@@ -4,7 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../../core/model/failure.dart';
 import '../../../../../movie_design_system/commom/utils/utils.dart';
-import '../../../../../movie_design_system/widgets/banner/crew_card.dart';
+import '../../../../../movie_design_system/widgets/card/card_crew.dart';
 import '../../../../../movie_design_system/widgets/error/error_widget.dart';
 import '../../../../../movie_design_system/widgets/error/no_internet_connection.dart';
 import '../../../../../movie_design_system/widgets/shimmer/shimmer_crew_card.dart';
@@ -53,7 +53,7 @@ class _CrewTvShowState extends ModularState<CrewTvShow, CrewTvShowStore> {
                     height: Sizes.height(context) * 0.2,
                     child: ListView.separated(
                       itemBuilder: (_, index) {
-                        return CrewCard(
+                        return CardCrew(
                           name: data[index].name,
                           image: data[index].profilePath,
                         );

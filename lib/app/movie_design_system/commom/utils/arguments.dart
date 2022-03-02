@@ -8,22 +8,15 @@ class ScreenArguments {
 
 class ScreenData {
   final int id;
-
   final String title;
-
   final String overview;
-
   final String releaseDate;
-
   final List<int> genreIds;
-
   final double voteAverage;
-
   final double popularity;
-
   final String posterPath;
-
   final String backdropPath;
+  final bool isMovie;
 
   ScreenData({
     required this.id,
@@ -35,5 +28,6 @@ class ScreenData {
     required this.popularity,
     required this.posterPath,
     required this.backdropPath,
+    required this.isMovie,
   });
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../movie_design_system/commom/utils/utils.dart';
-import '../../../../movie_design_system/widgets/banner/card_header.dart';
+import '../../../../movie_design_system/widgets/card/card_header.dart';
 import '../widgets/crew/crew_movie.dart';
 
 class OverviewMoviePage extends StatefulWidget {
@@ -41,8 +41,10 @@ class OverviewMoviePageState extends State<OverviewMoviePage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: Sizes.dp15(context),
+              padding: EdgeInsets.only(
+                left: Sizes.dp15(context),
+                right: Sizes.dp15(context),
+                bottom: Sizes.dp15(context),
               ),
               child: CrewMovie(id: widget.data.screenData.id.toString()),
             ),

@@ -22,7 +22,7 @@ class CustomBanner extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             child: CachedNetworkImage(
               imageUrl: AppConstants.urlImage + image,
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
               placeholder: (context, url) => const LoadingIndicator(),
               errorWidget: (context, url, error) => const ErrorImage(),
             ),

@@ -11,10 +11,12 @@ import '../../../../../movie_design_system/widgets/banner/custom_banner.dart';
 import '../../../../../movie_design_system/widgets/error/error_widget.dart';
 import '../../../../../movie_design_system/widgets/error/no_internet_connection.dart';
 import '../../../../../movie_design_system/widgets/shimmer/shimmer_card.dart';
+import '../../../model/movie/movie.dart';
 import 'upcoming_movies_store.dart';
 
 class UpcomingMovies extends StatefulWidget {
-  const UpcomingMovies({Key? key}) : super(key: key);
+  final String title;
+  const UpcomingMovies({Key? key, this.title = 'Upcoming&Movies'}) : super(key: key);
 
   @override
   _UpcomingMoviesState createState() => _UpcomingMoviesState();
@@ -54,7 +56,10 @@ class _UpcomingMoviesState extends State<UpcomingMovies> {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () => Modular.to.pushNamed(
+                        '${AppRoutes.discover}/${widget.title}',
+                        arguments: Movie.fromListScreenData(movie: data),
+                      ),
                       icon: Icon(
                         Icons.arrow_forward_ios_rounded,
                         size: Sizes.dp15(context),
@@ -81,6 +86,7 @@ class _UpcomingMoviesState extends State<UpcomingMovies> {
                               popularity: data[index].popularity,
                               posterPath: data[index].posterPath,
                               backdropPath: data[index].backdropPath,
+                              isMovie: true,
                             ),
                           ),
                         ),
