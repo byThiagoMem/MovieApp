@@ -12,7 +12,8 @@ import 'movie_banner_store.dart';
 
 class MovieBanner extends StatefulWidget {
   final String title;
-  const MovieBanner({Key? key, this.title = 'Now&Playing&Movies'}) : super(key: key);
+  const MovieBanner({Key? key, this.title = 'Now Playing Movies'})
+      : super(key: key);
 
   @override
   State<MovieBanner> createState() => _MovieBannerState();

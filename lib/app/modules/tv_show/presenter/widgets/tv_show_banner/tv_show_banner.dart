@@ -12,7 +12,7 @@ import 'tv_show_banner_store.dart';
 
 class TvShowBanner extends StatefulWidget {
   final String title;
-  const TvShowBanner({Key? key, this.title = 'Aring&Today'}) : super(key: key);
+  const TvShowBanner({Key? key, this.title = 'Aring Today'}) : super(key: key);
 
   @override
   _TvShowBannerState createState() => _TvShowBannerState();

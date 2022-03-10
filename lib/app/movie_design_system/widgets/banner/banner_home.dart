@@ -67,11 +67,15 @@ class BannerHome extends StatelessWidget {
                 footer: Container(
                   decoration: BoxDecoration(
                     color: ColorPalettes.whiteSemiTransparent,
-                    borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
+                    borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(10),
+                        bottomRight: Radius.circular(10)),
                   ),
                   padding: EdgeInsets.all(Sizes.dp5(context)),
                   child: Text(
-                    data[index].title.isNotEmpty ? data[index].title : 'No Tv Name',
+                    data[index].title.isNotEmpty
+                        ? data[index].title
+                        : 'No Tv Name',
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -104,7 +108,9 @@ class BannerHome extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: currentIndex == index ? ColorPalettes.darkAccent : ColorPalettes.grey,
+                        color: currentIndex == index
+                            ? ColorPalettes.darkAccent
+                            : ColorPalettes.grey,
                       ),
                     ),
                   ),
@@ -113,7 +119,7 @@ class BannerHome extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Modular.to.pushNamed('$routeNameAll/$title', arguments: data);
+                Modular.to.pushNamed(routeNameAll, arguments: [data, title]);
               },
               child: Text(
                 'See all',

@@ -9,10 +9,10 @@ class DiscoverModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ChildRoute(
-      '/:isFrom',
+      Modular.initialRoute,
       child: (_, args) => DiscoverPage(
-        data: args.data,
-        isFrom: args.params['isFrom'],
+        data: args.data[0],
+        isFrom: args.data[1],
       ),
     ),
   ];

@@ -13,13 +13,15 @@ import 'popular_movies_store.dart';
 
 class PopularMovies extends StatefulWidget {
   final String? title;
-  const PopularMovies({Key? key, this.title = 'Popular&Movies'}) : super(key: key);
+  const PopularMovies({Key? key, this.title = 'Popular Movies'})
+      : super(key: key);
 
   @override
   State<PopularMovies> createState() => _PopularMoviesState();
 }
 
-class _PopularMoviesState extends ModularState<PopularMovies, PopularMoviesStore> {
+class _PopularMoviesState
+    extends ModularState<PopularMovies, PopularMoviesStore> {
   @override
   void initState() {
     store.load();
@@ -52,8 +54,11 @@ class _PopularMoviesState extends ModularState<PopularMovies, PopularMoviesStore
                     ),
                     IconButton(
                       onPressed: () => Modular.to.pushNamed(
-                        '${AppRoutes.discover}/${widget.title}',
-                        arguments: Movie.fromListScreenData(movie: data),
+                        AppRoutes.discover,
+                        arguments: [
+                          Movie.fromListScreenData(movie: data),
+                          widget.title
+                        ],
                       ),
                       icon: Icon(
                         Icons.arrow_forward_ios_rounded,

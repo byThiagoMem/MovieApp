@@ -16,7 +16,8 @@ import 'upcoming_movies_store.dart';
 
 class UpcomingMovies extends StatefulWidget {
   final String title;
-  const UpcomingMovies({Key? key, this.title = 'Upcoming&Movies'}) : super(key: key);
+  const UpcomingMovies({Key? key, this.title = 'Upcoming Movies'})
+      : super(key: key);
 
   @override
   _UpcomingMoviesState createState() => _UpcomingMoviesState();
@@ -57,8 +58,11 @@ class _UpcomingMoviesState extends State<UpcomingMovies> {
                     ),
                     IconButton(
                       onPressed: () => Modular.to.pushNamed(
-                        '${AppRoutes.discover}/${widget.title}',
-                        arguments: Movie.fromListScreenData(movie: data),
+                        AppRoutes.discover,
+                        arguments: [
+                          Movie.fromListScreenData(movie: data),
+                          widget.title
+                        ],
                       ),
                       icon: Icon(
                         Icons.arrow_forward_ios_rounded,

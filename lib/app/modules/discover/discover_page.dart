@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mobx/mobx.dart';
 
-import '../../movie_design_system/commom/extension/extension.dart';
 import '../../movie_design_system/commom/utils/utils.dart';
 import '../../movie_design_system/widgets/card/card_discover.dart';
 
 class DiscoverPage extends StatefulWidget {
   final String isFrom;
   final List<ScreenData> data;
-  const DiscoverPage({Key? key, required this.data, required this.isFrom}) : super(key: key);
+  final Store? store;
+  const DiscoverPage({
+    Key? key,
+    required this.data,
+    required this.isFrom,
+    this.store,
+  }) : super(key: key);
   @override
   DiscoverPageState createState() => DiscoverPageState();
 }
@@ -19,7 +25,7 @@ class DiscoverPageState extends State<DiscoverPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          (widget.isFrom).replaceTitle,
+          widget.isFrom,
           style: const TextStyle(fontWeight: FontWeight.w600),
         ),
       ),
@@ -31,11 +37,13 @@ class DiscoverPageState extends State<DiscoverPage> {
               widget.data[index].isMovie
                   ? Modular.to.pushNamed(
                       AppRoutes.overviewMoviePage,
-                      arguments: ScreenArguments(screenData: widget.data[index]),
+                      arguments:
+                          ScreenArguments(screenData: widget.data[index]),
                     )
                   : Modular.to.pushNamed(
                       AppRoutes.overviewTvPage,
-                      arguments: ScreenArguments(screenData: widget.data[index]),
+                      arguments:
+                          ScreenArguments(screenData: widget.data[index]),
                     );
             },
           );
