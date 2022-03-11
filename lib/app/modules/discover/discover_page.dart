@@ -67,16 +67,12 @@ class DiscoverPageState extends ModularState<DiscoverPage, DiscoverStore> {
                 data: widget.data[index],
                 onTap: () {
                   widget.data[index].isMovie
-                      ? Modular.to.pushNamed(
-                          AppRoutes.overviewMoviePage,
+                      ? Modular.to.pushNamed(AppRoutes.overviewMoviePage,
                           arguments:
-                              ScreenArguments(screenData: widget.data[index]),
-                        )
-                      : Modular.to.pushNamed(
-                          AppRoutes.overviewTvPage,
+                              ScreenArguments(screenData: widget.data[index]))
+                      : Modular.to.pushNamed(AppRoutes.overviewTvPage,
                           arguments:
-                              ScreenArguments(screenData: widget.data[index]),
-                        );
+                              ScreenArguments(screenData: widget.data[index]));
                 },
               );
             },

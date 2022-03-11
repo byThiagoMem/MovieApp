@@ -14,7 +14,8 @@ import 'genre_chip.dart';
 class CardDiscover extends StatelessWidget {
   final ScreenData data;
   final VoidCallback onTap;
-  const CardDiscover({Key? key, required this.data, required this.onTap}) : super(key: key);
+  const CardDiscover({Key? key, required this.data, required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class CardDiscover extends StatelessWidget {
                   imageUrl: AppConstants.urlImage + data.posterPath,
                   placeholder: (_, __) => const LoadingIndicator(),
                   errorWidget: (_, __, ___) => const ErrorImage(),
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
@@ -80,7 +81,9 @@ class CardDiscover extends StatelessWidget {
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
-                          children: data.genreIds.map((e) => GenreTile(title: Genres.genres[e]!)).toList(),
+                          children: data.genreIds
+                              .map((e) => GenreTile(title: Genres.genres[e]!))
+                              .toList(),
                         ),
                       ),
                       SizedBox(height: Sizes.dp4(context)),
