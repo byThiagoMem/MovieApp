@@ -36,10 +36,26 @@
 
    ---
    
-   <h2 align="center">Used Packages 🎨</h2>
-   <p align="left">
-      -shimmer: ^2.0.0
-   </p>
+   <h2 align="center">Used Packages</h2>
+   <p align="left"> UI </p>
+      
+   - <a >shimmer: ^2.0.0</a>
+   - <a >carousel_slider: ^4.0.0</a>
+   - <a >cached_network_image: ^3.0.0</a>
+   - <a >flutter_rating_stars: ^1.0.3+4</a>
+    
+   <p align="left"> Firebase </p>
+   
+   - <a >firebase_core: ^1.12.0</a>
+   - <a >firebase_remote_config: ^2.0.0</a>
+   - <a >firebase_analytics: ^8.1.2</a>
+   
+   <p align="left"> Core </p>
+   
+   - <a >dio: ^4.0.4</a>
+   - <a >effective_dart: ^1.3.0</a>
+
+---
 
    >This project was developed with by **[@Thiago Mem](https://www.linkedin.com/in/thiago-a-mem-311720130/)**.<br>
 
