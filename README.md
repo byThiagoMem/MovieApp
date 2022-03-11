@@ -11,3 +11,28 @@
 
 ---
 
+<h2 align="center">Layout 🎨</h2>
+   
+  <div style="display: inline_block"><br>
+      <img align="center" alt="MovieApp" height="" width="250" src="https://raw.githubusercontent.com/byThiagoMem/movie_app/master/assets/screenshots/home.jpg">
+      <img align="center" alt="MovieApp" height="500" width="250" src="https://github.com/byThiagoMem/movie_app/blob/master/assets/screenshots/details.jpg?raw=true">
+      <img align="center" alt="MovieApp" height="500" width="250" src="https://github.com/byThiagoMem/movie_app/blob/master/assets/screenshots/sinopsy.jpg?raw=true">
+      <img align="center" alt="MovieApp" height="500" width="250" src="https://github.com/byThiagoMem/movie_app/blob/master/assets/screenshots/discover.jpg?raw=true">
+      
+      
+   </div>
+   
+   ---
+   
+
+   <p align="center">
+      The Layout was developed by <a href="https://instagram.com/tiagoluchtenberg">Tiago Luchtenberg</a>, and you can access it on Figma:
+   
+   - <a href="https://www.figma.com/file/kLK7FYnWKMoN68sQXcSniu/PayFlow">Mobile</a> 📱
+   </p>
+
+   ---
+
+   >This project was developed with by **[@Thiago Mem](https://www.linkedin.com/in/thiago-a-mem-311720130/)**, with the instructor **[@GabulDev](https://www.linkedin.com/in/gabuldev/)**, in #NextLevelWeek from **[Rocketseat](https://rocketseat.com.br/)**.<br>
+
+---
