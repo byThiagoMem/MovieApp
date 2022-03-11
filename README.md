@@ -1,16 +1,13 @@
-# movies_app
+<p align="center">
+      <img src="https://raw.githubusercontent.com/byThiagoMem/movie_app/master/assets/images/logo.png" width="100" alt="Logo PayFlow"/>
+</p>
 
-A new Flutter project.
+<h2 align="center">Sobre 📖</h2>
 
-## Getting Started
+<p align="center">
+    Este projeto foi desenvolvido a fim de estudar abordagens como Design Pattern, Consumo de Api, Animações, etc...
+    <a href="https://pub.dev/packages/flutter_modular">Flutter_modular</a> foi usado para separar as injeções de dependência em cada módulo para que quando você não usar mais a dependência, ela seja removida ou removida da memória ao sair do Módulo. <a href="https://pub.dev/packages/mobx">Mobx</a> foi usado para simplificar as ações de Store/Controllers e vincular ações de tela com UseCases que vinculam à API do filme..<br>
+</p>
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
