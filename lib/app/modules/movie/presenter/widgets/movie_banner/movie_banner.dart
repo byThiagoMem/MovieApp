@@ -19,13 +19,11 @@ class MovieBanner extends StatefulWidget {
   State<MovieBanner> createState() => _MovieBannerState();
 }
 
-class _MovieBannerState extends State<MovieBanner> {
-  final _store = Modular.get<MovieBannerStore>();
-
+class _MovieBannerState extends ModularState<MovieBanner, MovieBannerStore> {
   @override
   void initState() {
     super.initState();
-    _store.load();
+    store.load();
   }
 
   @override
@@ -33,7 +31,7 @@ class _MovieBannerState extends State<MovieBanner> {
     int _currentIndex = 0;
 
     return Observer(
-      builder: (_) => _store.nowPlayingMovies.handleStateLoadable(
+      builder: (_) => store.nowPlayingMovies.handleStateLoadable(
         () {
           return const Center(child: ShimmerBanner());
         },
@@ -44,22 +42,7 @@ class _MovieBannerState extends State<MovieBanner> {
           return StatefulBuilder(
             key: const ValueKey('NothingFound'),
             builder: (_, setState) => BannerHome(
-              data: List.from(
-                data.map(
-                  (e) => ScreenData(
-                    id: e.id,
-                    title: e.title,
-                    overview: e.overview,
-                    releaseDate: e.releaseDate,
-                    genreIds: e.genreIds,
-                    voteAverage: e.voteAverage,
-                    popularity: e.popularity,
-                    posterPath: e.posterPath,
-                    backdropPath: e.backdropPath,
-                    isMovie: true,
-                  ),
-                ),
-              ),
+              data: store.movies,
               currentIndex: _currentIndex,
               onPageChanged: (index, reason) => setState(
                 () => _currentIndex = index,
@@ -67,6 +50,7 @@ class _MovieBannerState extends State<MovieBanner> {
               routeNameDetail: AppRoutes.overviewMoviePage,
               routeNameAll: AppRoutes.discover,
               title: widget.title,
+              loadMoreData: store.load,
             ),
           );
         },
@@ -74,7 +58,7 @@ class _MovieBannerState extends State<MovieBanner> {
           if (error is DioFailure) {
             return NoInternetConnection(
               message: AppConstants.noInternetConnection,
-              onPressed: () => _store.load(),
+              onPressed: () => store.load(),
             );
           }
           if (error is DataFailure) {

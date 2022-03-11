@@ -8,7 +8,6 @@ import '../../../../../movie_design_system/widgets/banner/custom_banner.dart';
 import '../../../../../movie_design_system/widgets/error/error_widget.dart';
 import '../../../../../movie_design_system/widgets/error/no_internet_connection.dart';
 import '../../../../../movie_design_system/widgets/shimmer/shimmer_card.dart';
-import '../../../model/movie/movie.dart';
 import 'popular_movies_store.dart';
 
 class PopularMovies extends StatefulWidget {
@@ -56,8 +55,9 @@ class _PopularMoviesState
                       onPressed: () => Modular.to.pushNamed(
                         AppRoutes.discover,
                         arguments: [
-                          Movie.fromListScreenData(movie: data),
-                          widget.title
+                          store.movies,
+                          widget.title,
+                          store.load,
                         ],
                       ),
                       icon: Icon(
@@ -72,20 +72,20 @@ class _PopularMoviesState
                   child: ListView.separated(
                     itemBuilder: (_, index) {
                       return CustomBanner(
-                        image: data[index].posterPath,
+                        image: store.movies[index].posterPath,
                         onTap: () => Modular.to.pushNamed(
                           AppRoutes.overviewMoviePage,
                           arguments: ScreenArguments(
                             screenData: ScreenData(
-                              id: data[index].id,
-                              title: data[index].title,
-                              overview: data[index].overview,
-                              releaseDate: data[index].releaseDate,
-                              genreIds: data[index].genreIds,
-                              voteAverage: data[index].voteAverage,
-                              popularity: data[index].popularity,
-                              posterPath: data[index].posterPath,
-                              backdropPath: data[index].backdropPath,
+                              id: store.movies[index].id,
+                              title: store.movies[index].title,
+                              overview: store.movies[index].overview,
+                              releaseDate: store.movies[index].releaseDate,
+                              genreIds: store.movies[index].genreIds,
+                              voteAverage: store.movies[index].voteAverage,
+                              popularity: store.movies[index].popularity,
+                              posterPath: store.movies[index].posterPath,
+                              backdropPath: store.movies[index].backdropPath,
                               isMovie: true,
                             ),
                           ),

@@ -15,7 +15,7 @@ abstract class _CrewMovieStoreBase with Store {
   ShimmerState<List<MovieCrew>> crew = ShimmerState<List<MovieCrew>>();
 
   Future<void> load({required String id}) async {
-    (await _moviesService.getCrewMovieById(id: id)).result(
+    (await _moviesService.getCrewMovieById(id)).result(
       (data) => crew.setData(data),
       (error) => crew.setError(error),
     );

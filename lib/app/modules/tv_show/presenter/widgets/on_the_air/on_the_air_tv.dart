@@ -8,7 +8,6 @@ import '../../../../../movie_design_system/widgets/banner/custom_banner.dart';
 import '../../../../../movie_design_system/widgets/error/error_widget.dart';
 import '../../../../../movie_design_system/widgets/error/no_internet_connection.dart';
 import '../../../../../movie_design_system/widgets/shimmer/shimmer_card.dart';
-import '../../../model/tv_show/tv_show.dart';
 import 'on_the_air_tv_store.dart';
 
 class OnTheAirTv extends StatefulWidget {
@@ -19,19 +18,17 @@ class OnTheAirTv extends StatefulWidget {
   _OnTheAirTvState createState() => _OnTheAirTvState();
 }
 
-class _OnTheAirTvState extends State<OnTheAirTv> {
-  final _store = Modular.get<OnTheAirTvStore>();
-
+class _OnTheAirTvState extends ModularState<OnTheAirTv, OnTheAirTvStore> {
   @override
   void initState() {
-    _store.load();
+    store.load();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Observer(
-      builder: (_) => _store.onTheAirTv.handleStateLoadable(
+      builder: (_) => store.onTheAirTv.handleStateLoadable(
         () {
           return const Center(child: ShimmerCard());
         },
@@ -56,8 +53,9 @@ class _OnTheAirTvState extends State<OnTheAirTv> {
                       onPressed: () => Modular.to.pushNamed(
                         AppRoutes.discover,
                         arguments: [
-                          TvShow.fromListScreenData(movie: data),
-                          widget.title
+                          store.tvShowsList,
+                          widget.title,
+                          store.load,
                         ],
                       ),
                       icon: Icon(
@@ -72,20 +70,21 @@ class _OnTheAirTvState extends State<OnTheAirTv> {
                   child: ListView.separated(
                     itemBuilder: (_, index) {
                       return CustomBanner(
-                        image: data[index].posterPath,
+                        image: store.tvShowsList[index].posterPath,
                         onTap: () => Modular.to.pushNamed(
                           AppRoutes.overviewTvPage,
                           arguments: ScreenArguments(
                             screenData: ScreenData(
-                              id: data[index].id,
-                              title: data[index].title,
-                              overview: data[index].overview,
-                              releaseDate: data[index].firstAirDate,
-                              genreIds: data[index].genreIds,
-                              voteAverage: data[index].voteAverage,
-                              popularity: data[index].popularity,
-                              posterPath: data[index].posterPath,
-                              backdropPath: data[index].backdropPath,
+                              id: store.tvShowsList[index].id,
+                              title: store.tvShowsList[index].title,
+                              overview: store.tvShowsList[index].overview,
+                              releaseDate: store.tvShowsList[index].releaseDate,
+                              genreIds: store.tvShowsList[index].genreIds,
+                              voteAverage: store.tvShowsList[index].voteAverage,
+                              popularity: store.tvShowsList[index].popularity,
+                              posterPath: store.tvShowsList[index].posterPath,
+                              backdropPath:
+                                  store.tvShowsList[index].backdropPath,
                               isMovie: false,
                             ),
                           ),
@@ -106,7 +105,7 @@ class _OnTheAirTvState extends State<OnTheAirTv> {
           if (error is DioFailure) {
             return NoInternetConnection(
               message: AppConstants.noInternetConnection,
-              onPressed: () => _store.load(),
+              onPressed: () => store.load(),
             );
           }
           if (error is DataFailure) {

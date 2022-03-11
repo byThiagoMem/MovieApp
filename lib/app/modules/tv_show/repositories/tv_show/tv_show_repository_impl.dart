@@ -14,31 +14,35 @@ class TvShowRepositoryImpl implements TvShowRepository {
   }) : _dio = dio;
 
   @override
-  Future<Result<List<TvShow>>> getAiringTodayTv() async {
-    return await _dio
-        .get('/tv/airing_today')
-        .fullResult((json) => TvShow.fromMapList(json));
+  Future<Result<List<TvShow>>> getAiringTodayTv({required int page}) async {
+    return await _dio.get(
+      '/tv/airing_today',
+      queryParameters: {'page': page},
+    ).fullResult((json) => TvShow.fromMapList(json));
   }
 
   @override
-  Future<Result<List<TvShow>>> getOnTheAirTv() async {
-    return await _dio
-        .get('/tv/on_the_air')
-        .fullResult((json) => TvShow.fromMapList(json));
+  Future<Result<List<TvShow>>> getOnTheAirTv({required int page}) async {
+    return await _dio.get(
+      '/tv/on_the_air',
+      queryParameters: {'page': page},
+    ).fullResult((json) => TvShow.fromMapList(json));
   }
 
   @override
-  Future<Result<List<TvShow>>> getPopularTv() async {
-    return await _dio
-        .get('/tv/popular')
-        .fullResult((json) => TvShow.fromMapList(json));
+  Future<Result<List<TvShow>>> getPopularTv({required int page}) async {
+    return await _dio.get(
+      '/tv/popular',
+      queryParameters: {'page': page},
+    ).fullResult((json) => TvShow.fromMapList(json));
   }
 
   @override
-  Future<Result<List<TvShow>>> getTopRatedTv() async {
-    return await _dio
-        .get('/tv/top_rated')
-        .fullResult((json) => TvShow.fromMapList(json));
+  Future<Result<List<TvShow>>> getTopRatedTv({required int page}) async {
+    return await _dio.get(
+      '/tv/top_rated',
+      queryParameters: {'page': page},
+    ).fullResult((json) => TvShow.fromMapList(json));
   }
 
   @override

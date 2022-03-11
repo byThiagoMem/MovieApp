@@ -12,35 +12,35 @@ class MoviesRepositoryImpl implements MoviesRepository {
   MoviesRepositoryImpl({required Dio dio}) : _dio = dio;
 
   @override
-  Future<Result<List<Movie>>> getUpcomingMovies() async {
-    return await _dio
-        .get('/movie/upcoming')
-        .fullResult((json) => Movie.fromMapList(json));
+  Future<Result<List<Movie>>> getUpcomingMovies({required int page}) async {
+    return await _dio.get('/movie/upcoming', queryParameters: {
+      'page': page,
+    }).fullResult((json) => Movie.fromMapList(json));
   }
 
   @override
-  Future<Result<List<Movie>>> getPopularMovies() async {
-    return await _dio
-        .get('/movie/popular')
-        .fullResult((json) => Movie.fromMapList(json));
+  Future<Result<List<Movie>>> getPopularMovies({required int page}) async {
+    return await _dio.get('/movie/popular', queryParameters: {
+      'page': page,
+    }).fullResult((json) => Movie.fromMapList(json));
   }
 
   @override
-  Future<Result<List<Movie>>> getTopRatedMovies() async {
-    return await _dio
-        .get('/movie/top_rated')
-        .fullResult((json) => Movie.fromMapList(json));
+  Future<Result<List<Movie>>> getTopRatedMovies({required int page}) async {
+    return await _dio.get('/movie/top_rated', queryParameters: {
+      'page': page,
+    }).fullResult((json) => Movie.fromMapList(json));
   }
 
   @override
-  Future<Result<List<Movie>>> getNowPlayingMovies() async {
-    return await _dio
-        .get('/movie/now_playing')
-        .fullResult((json) => Movie.fromMapList(json));
+  Future<Result<List<Movie>>> getNowPlayingMovies({required int page}) async {
+    return await _dio.get('/movie/now_playing', queryParameters: {
+      'page': page,
+    }).fullResult((json) => Movie.fromMapList(json));
   }
 
   @override
-  Future<Result<List<MovieCrew>>> getCrewMovieById({required String id}) async {
+  Future<Result<List<MovieCrew>>> getCrewMovieById(String id) async {
     return await _dio
         .get('movie/$id/credits')
         .fullResult((json) => MovieCrew.fromMapList(json));

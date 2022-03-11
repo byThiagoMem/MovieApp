@@ -18,20 +18,18 @@ class TvShowBanner extends StatefulWidget {
   _TvShowBannerState createState() => _TvShowBannerState();
 }
 
-class _TvShowBannerState extends State<TvShowBanner> {
-  final _store = Modular.get<TvShowBannerStore>();
-
+class _TvShowBannerState extends ModularState<TvShowBanner, TvShowBannerStore> {
   @override
   void initState() {
     super.initState();
-    _store.load();
+    store.load();
   }
 
   @override
   Widget build(BuildContext context) {
     int _currentIndex = 0;
     return Observer(
-      builder: (_) => _store.aringTodayTvShows.handleStateLoadable(
+      builder: (_) => store.aringTodayTvShows.handleStateLoadable(
         () {
           return const Center(child: ShimmerBanner());
         },
@@ -42,22 +40,7 @@ class _TvShowBannerState extends State<TvShowBanner> {
           return StatefulBuilder(
             key: const ValueKey('NothingFound 2'),
             builder: (_, setState) => BannerHome(
-              data: List.from(
-                data.map(
-                  (e) => ScreenData(
-                    id: e.id,
-                    title: e.title,
-                    overview: e.overview,
-                    releaseDate: e.firstAirDate,
-                    genreIds: e.genreIds,
-                    voteAverage: e.voteAverage,
-                    popularity: e.popularity,
-                    posterPath: e.posterPath,
-                    backdropPath: e.backdropPath,
-                    isMovie: false,
-                  ),
-                ),
-              ),
+              data: store.tvShowsList,
               currentIndex: _currentIndex,
               onPageChanged: (index, reason) => setState(
                 () => _currentIndex = index,
@@ -65,6 +48,7 @@ class _TvShowBannerState extends State<TvShowBanner> {
               routeNameDetail: AppRoutes.overviewTvPage,
               routeNameAll: AppRoutes.discover,
               title: widget.title,
+              loadMoreData: store.load,
             ),
           );
         },
@@ -72,7 +56,7 @@ class _TvShowBannerState extends State<TvShowBanner> {
           if (error is DioFailure) {
             return NoInternetConnection(
               message: AppConstants.noInternetConnection,
-              onPressed: () => _store.load(),
+              onPressed: () => store.load(),
             );
           }
           if (error is DataFailure) {

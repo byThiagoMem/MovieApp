@@ -12,20 +12,20 @@ class TvShowServiceImpl implements TvShowService {
   }) : _tvShowRepository = tvShowRepository;
 
   @override
-  Future<Result<List<TvShow>>> getAiringTodayTv() =>
-      _tvShowRepository.getAiringTodayTv();
+  Future<Result<List<TvShow>>> getAiringTodayTv({required int page}) =>
+      _tvShowRepository.getAiringTodayTv(page: page);
 
   @override
-  Future<Result<List<TvShow>>> getOnTheAirTv() =>
-      _tvShowRepository.getOnTheAirTv();
+  Future<Result<List<TvShow>>> getOnTheAirTv({required int page}) =>
+      _tvShowRepository.getOnTheAirTv(page: page);
 
   @override
-  Future<Result<List<TvShow>>> getPopularTv() =>
-      _tvShowRepository.getPopularTv();
+  Future<Result<List<TvShow>>> getPopularTv({required int page}) =>
+      _tvShowRepository.getPopularTv(page: page);
 
   @override
-  Future<Result<List<TvShow>>> getTopRatedTv() =>
-      _tvShowRepository.getTopRatedTv();
+  Future<Result<List<TvShow>>> getTopRatedTv({required int page}) =>
+      _tvShowRepository.getTopRatedTv(page: page);
 
   @override
   Future<Result<List<TvShowCrew>>> getCrewTvById({required String id}) =>

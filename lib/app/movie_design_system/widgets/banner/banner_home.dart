@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mobx/mobx.dart';
 
 import '../../commom/styles/color_palettes.dart';
 import '../../commom/utils/app_constants.dart';
@@ -11,12 +12,13 @@ import '../error/error_image.dart';
 import '../progress/loading_indicator.dart';
 
 class BannerHome extends StatelessWidget {
-  final List<ScreenData> data;
+  final ObservableList<ScreenData> data;
   final int currentIndex;
-  final Function(int index, CarouselPageChangedReason reason) onPageChanged;
   final String title;
   final String routeNameDetail;
   final String routeNameAll;
+  final VoidCallback loadMoreData;
+  final Function(int index, CarouselPageChangedReason reason) onPageChanged;
 
   const BannerHome({
     Key? key,
@@ -26,6 +28,7 @@ class BannerHome extends StatelessWidget {
     required this.routeNameDetail,
     required this.routeNameAll,
     required this.title,
+    required this.loadMoreData,
   }) : super(key: key);
 
   @override
@@ -119,7 +122,11 @@ class BannerHome extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Modular.to.pushNamed(routeNameAll, arguments: [data, title]);
+                Modular.to.pushNamed(routeNameAll, arguments: [
+                  data,
+                  title,
+                  loadMoreData,
+                ]);
               },
               child: Text(
                 'See all',

@@ -13,6 +13,7 @@ class DiscoverModule extends Module {
       child: (_, args) => DiscoverPage(
         data: args.data[0],
         isFrom: args.data[1],
+        loadMoreData: args.data[2],
       ),
     ),
   ];
