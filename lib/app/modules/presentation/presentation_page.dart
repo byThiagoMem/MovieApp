@@ -11,7 +11,6 @@ import '../../movie_design_system/commom/utils/utils.dart';
 import '../../movie_design_system/widgets/card/card_presentation.dart';
 import '../../movie_design_system/widgets/error/error.dart';
 import '../../movie_design_system/widgets/progress/loading_indicator.dart';
-import '../../movie_design_system/widgets/shimmer/shimmer_card.dart';
 import 'presentation_store.dart';
 
 class PresentationPage extends StatefulWidget {
@@ -36,11 +35,11 @@ class PresentationPageState
       body: Observer(
         builder: (_) => store.nowPlayingMovies.handleStateLoadable(
           () {
-            return const Center(child: ShimmerCard());
+            return const Center(child: LoadingIndicator());
           },
           (data, loading) {
             if (loading) {
-              return const Center(child: ShimmerCard());
+              return const Center(child: LoadingIndicator());
             } else {
               return PageView.builder(
                 onPageChanged: (value) => store.setCurrentPage(value),
