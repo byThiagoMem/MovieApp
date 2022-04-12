@@ -14,7 +14,7 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       title: 'Movies App',
       theme: AppTheme.darkTheme,
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
     ).modular();
   }
 }
